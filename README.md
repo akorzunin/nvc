@@ -20,11 +20,18 @@ My neovim config:
 	Copy: `"+y`
 	Paste: `"+gp`
 
+LSP
+- prev/next suggestion Ctrl p/n 
+- apply current suggestion Ctrl y
+- show suggestion list Ctrl Space
+
 ### visual
 - move selection `shift j / k`
 - 
 
-
+Git (`Space gs` view)
+- Discard file X
+- 
 # Plugins
 
 ## Telescope
