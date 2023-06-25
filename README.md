@@ -69,13 +69,13 @@ Others
 git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
 ```
 
-- for telescope
+- for telescope (use admin cmd)
 
 ```
 choco install ripgrep
 ```
 
-- for Treesitter
+- for Treesitter (use admin cmd)
 
 ```
 choco install zig
