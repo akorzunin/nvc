@@ -47,3 +47,9 @@ vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- paste into nvim from windows clipboard
+vim.keymap.set("n", "<leader>wp", '"+gp')
+-- copy from vim into windows clipboard
+vim.keymap.set("v", "<leader>wc", '"+y')
+
