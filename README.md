@@ -80,3 +80,5 @@ choco install ripgrep
 ```
 choco install zig
 ```
+install fonts from [here](https://www.nerdfonts.com/font-downloadshttps://www.nerdfonts.com/font-downloads)
+
