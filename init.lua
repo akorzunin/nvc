@@ -1,7 +1,7 @@
 vim.api.nvim_exec('language en_US', true)
 
 -- old configs
-require("avkorz")
+--require("avkorz")
 
 -- nvchad configs
 require "core"

@@ -8,7 +8,7 @@ M.disabled = {
   }
 }
 
-M.abc = {
+M.general = {
   n = {
     ["<leader>pv"] = {"<cmd> NvimTreeToggle <CR>"}
   }
@@ -19,5 +19,35 @@ M.fugitive = {
     ["<leader>gs"] = {"<cmd> Git <CR>"}
   }
 }
+
+M.undotree = {
+  n = {
+    ["<leader>u"] = {"<cmd> UndotreeToggle <CR>", "Toggle undotree"}
+  }
+}
+--
+-- local mark = require("harpoon.mark")
+-- M.harpoon = {
+--   ["<leader>ha"] = {
+--     function()
+--       mark.add_file
+--     end,
+--     "Harpoon: add files",
+--   },
+--   ["<leader>he"] = {
+--     function()
+--       local ui = require("harpoon.ui")
+--       ui.toggle_quick_menu
+--     end,
+--     "Harpoon: show files",
+--
+--   }
+-- }
+  -- ["<leader>ht"] = {
+    --   function()
+    --     require("nvterm.terminal").new "horizontal"
+    --   end,
+    --   "New horizontal term",
+    -- },
 
 return M
