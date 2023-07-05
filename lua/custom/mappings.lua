@@ -10,7 +10,9 @@ M.disabled = {
 
 M.general = {
   n = {
-    ["<leader>pv"] = {"<cmd> NvimTreeToggle <CR>"}
+    ["<leader>pv"] = {"<cmd> NvimTreeToggle <CR>"},
+    ["<leader>wc"] = {"<cmd> NvimTreeToggle <CR>"},
+    ["<leader>wp"] = {"<cmd> NvimTreeToggle <CR>"}
   }
 }
 
