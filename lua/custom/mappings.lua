@@ -1,19 +1,23 @@
 local M = {}
 
-M.dap = {
-    plugin = true,
-    n = {
-        ["<leader>db"] = {"<cmd> DapToggleBreakpoint <CR>"}
-    }
+-- In order to disable a default keymap, use
+M.disabled = {
+  n = {
+      -- ["<leader>h"] = "",
+      -- ["<C-a>"] = ""
+  }
 }
 
-M.dap_python = {
-    plugin = true,
-    n = {
-        ["<leader>dpr"] = {function()
-            require('dap-python').test_method()
-        end}
-    }
+M.abc = {
+  n = {
+    ["<leader>pv"] = {"<cmd> NvimTreeToggle <CR>"}
+  }
+}
+
+M.fugitive = {
+  n = {
+    ["<leader>gs"] = {"<cmd> Git <CR>"}
+  }
 }
 
 return M
