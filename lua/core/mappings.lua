@@ -332,7 +332,7 @@ M.nvterm = {
     },
 
     -- new
-    ["<leader>ht"] = {
+    ["<leader>h"] = {
       function()
         require("nvterm.terminal").new "horizontal"
       end,

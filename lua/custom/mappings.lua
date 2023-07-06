@@ -10,9 +10,11 @@ M.disabled = {
 
 M.general = {
   n = {
-    ["<leader>pv"] = {"<cmd> NvimTreeToggle <CR>"},
-    ["<leader>wc"] = {"<cmd> NvimTreeToggle <CR>"},
-    ["<leader>wp"] = {"<cmd> NvimTreeToggle <CR>"}
+    ["<leader>pv"] = {"<cmd> NvimTreeToggle <CR>", "Open file eplorer"},
+    ["<leader>wp"] = {'"+gp', "paste from Windows clipboard"}
+  },
+  v = {
+    ["<leader>wc"] = {'"+y', "Copy to Windows clipboard"},
   }
 }
 
@@ -27,29 +29,18 @@ M.undotree = {
     ["<leader>u"] = {"<cmd> UndotreeToggle <CR>", "Toggle undotree"}
   }
 }
---
--- local mark = require("harpoon.mark")
--- M.harpoon = {
---   ["<leader>ha"] = {
---     function()
---       mark.add_file
---     end,
---     "Harpoon: add files",
---   },
---   ["<leader>he"] = {
---     function()
---       local ui = require("harpoon.ui")
---       ui.toggle_quick_menu
---     end,
---     "Harpoon: show files",
---
---   }
--- }
-  -- ["<leader>ht"] = {
-    --   function()
-    --     require("nvterm.terminal").new "horizontal"
-    --   end,
-    --   "New horizontal term",
-    -- },
+
+M.nvterm = {
+  plugin = true,
+  n = {
+    -- new
+    ["<leader>ht"] = {
+      function()
+        require("nvterm.terminal").new "horizontal"
+      end,
+      "New horizontal term",
+    },
+  },
+}
 
 return M
