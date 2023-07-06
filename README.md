@@ -80,5 +80,22 @@ choco install ripgrep
 ```
 choco install zig
 ```
+
 install fonts from [here](https://www.nerdfonts.com/font-downloadshttps://www.nerdfonts.com/font-downloads)
 
+## nvchad
+
+### nvimTree
+
+a - add file/folder
+_m - mark file
+c p - copy paste file
+r - rename file
+Ctrl K - file info
+
+### window navigation
+
+Ctrl hjkl - move cursor
+:sp slpit
+:vsp vertical split
+_x - close file as tab
