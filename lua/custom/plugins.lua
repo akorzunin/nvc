@@ -16,6 +16,21 @@ local plugins = {
         lazy = false
     },
     {
+        "mfussenegger/nvim-dap",
+        config = function(_, opts)
+            require("core.utils").load_mappings("dap")
+        end
+    }, {
+        "mfussenegger/nvim-dap-python",
+        ft = "python",
+        dependencies = {"mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui"},
+        -- config = function(_, opts)
+            -- local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
+            -- require("dap-python").setup(path)
+            -- require("core.utils").load_mappings("dap_python")
+        -- end
+    },
+    {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {"black", "debugpy", "mypy", "ruff", "pyright"}
@@ -95,6 +110,12 @@ local plugins = {
         event = {'BufReadPre', 'BufNewFile'},
         dependencies = {{'hrsh7th/cmp-nvim-lsp'}, {'williamboman/mason-lspconfig.nvim'}, {
             'williamboman/mason.nvim',
+            ensure_installed = {
+                "black",
+                "ruff",
+                "mypy",
+                "pyright",
+            },
             build = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end
@@ -114,6 +135,13 @@ local plugins = {
             require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
 
             lsp.setup()
+        end
+    }, 
+    {
+        "jose-elias-alvarez/null-ls.nvim",
+        ft = {"python"},
+        opts = function()
+            return require "custom.configs.null-ls"
         end
     },
     -- TODO: some stuff
