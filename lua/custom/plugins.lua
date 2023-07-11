@@ -1,32 +1,84 @@
 local plugins = {
-    {"nvim-tree/nvim-web-devicons", lazy = false},
-    {"tpope/vim-fugitive", lazy=false},
-    {"mbbill/undotree", lazy = false},
-    {"theprimeagen/harpoon", lazy = false},
+    {
+        "nvim-tree/nvim-web-devicons",
+        event="VeryLazy"
+    },
+    {
+        "tpope/vim-fugitive",
+        event="VeryLazy"
+    },
+    {
+        "mbbill/undotree",
+        lazy = false
+    },
+    {
+        "theprimeagen/harpoon",
+        lazy = false
+    },
     {
         "williamboman/mason.nvim",
         opts = {
             ensure_installed = {"black", "debugpy", "mypy", "ruff", "pyright"}
         }
-    }, {
+    }, 
+    {
         "neovim/nvim-lspconfig",
         config = function()
             require "plugins.configs.lspconfig"
             require "custom.configs.lspconfig"
         end
-    }, {
+    },
+    {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
-        dependencies = {'nvim-lua/plenary.nvim'}
-    }, {
+        dependencies = {'nvim-lua/plenary.nvim'},
+        -- config = function()
+        --     local project_actions = require("telescope._extensions.project.actions")
+        --     extensions = {
+        --         project = {
+        --             base_dirs = {
+        --                 '~/dev/src',
+        --                 {'~/dev/src2'},
+        --                 {'~/dev/src3', max_depth = 4},
+        --                 {path = '~/dev/src4'},
+        --                 {path = '~/dev/src5', max_depth = 2},
+        --             },
+        --             hidden_files = true, -- default: false
+        --             theme = "dropdown",
+        --             order_by = "asc",
+        --             search_by = "title",
+        --             sync_with_nvim_tree = true, -- default false
+        --             -- default for on_project_selected = find project files
+        --             on_project_selected = function(prompt_bufnr)
+        --                 -- Do anything you want in here. For example:
+        --                 project_actions.change_working_directory(prompt_bufnr, false)
+        --                 require("harpoon.ui").nav_file(1)
+        --             end
+        --         }
+        --     }
+        -- end,
+    },
+    {
         "folke/trouble.nvim",
         dependencies = {"nvim-tree/nvim-web-devicons"},
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
+            signs = {
+                -- icons / text used for a diagnostic
+                error = "󰚌",
+                warning = "",
+                hint = "",
+                information = "",
+                other = "",
+            },
         }
-    }, {"theprimeagen/harpoon"}, {"tpope/vim-fugitive", lazy=false}, {'rose-pine/neovim'}, {
+    },
+    {
+        'rose-pine/neovim'
+    },
+    {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
         lazy = true,
@@ -36,7 +88,8 @@ local plugins = {
 
             require('lsp-zero.settings').preset({})
         end
-    },  {
+    },
+    {
         'neovim/nvim-lspconfig',
         cmd = 'LspInfo',
         event = {'BufReadPre', 'BufNewFile'},
@@ -63,6 +116,34 @@ local plugins = {
             lsp.setup()
         end
     },
+    -- TODO: some stuff
+    -- NOTE: some note
+    -- {
+    --     "ahmedkhalf/project.nvim",
+    --     lazy = false,
+    --     config = function()
+    --         require("project_nvim").setup {
+    --             -- your configuration comes here
+    --             -- or leave it empty to use the default settings
+    --             -- refer to the configuration section below
+    --         }
+    --     end
+    -- },
+    -- TODO: and moe stuff
+    {
+        "folke/todo-comments.nvim",
+        event = "VeryLazy",
+        dependencies = { "nvim-lua/plenary.nvim" },
+        opts = {
+            -- your configuration comes here
+            -- or leave it empty to use the default settings
+            -- refer to the configuration section below
+        },
+        config = function ()
+            local tdc = require "todo-comments"
+            tdc.opts = {}
+            tdc.setup()
+        end
+    },
 }
 return plugins
-
