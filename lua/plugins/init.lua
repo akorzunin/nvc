@@ -30,6 +30,9 @@ local default_plugins = {
       require("core.utils").load_mappings "nvterm"
     end,
     config = function(_, opts)
+      if vim.loop.os_uname().sysname == "Windows_NT" then
+        opts.terminals = { shell = "powershell", }
+      end
       require "base46.term"
       require("nvterm").setup(opts)
     end,
