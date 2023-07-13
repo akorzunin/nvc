@@ -1,7 +1,26 @@
 vim.api.nvim_exec('language en_US', true)
 
+function PrintTable( t, indent, done )
+	done = done or {}
+	indent = indent or 0
+	done[t] = true
+
+	for key, value in pairs(t) do
+		if type(value) == "table" and not done[value] then
+			done[value] = true
+			print(string.rep(" ", indent) .. key .. ":")
+			PrintTable(value, indent + 2, done)
+			done[value] = nil
+		else
+			print(string.rep(" ", indent) .. key .. " = " .. tostring(value))
+		end
+	end
+end
+
 -- old configs
 --require("avkorz")
+
+vim.g.vscode_snippets_path = "./snippets"
 
 -- nvchad configs
 require "core"

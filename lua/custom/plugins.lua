@@ -17,18 +17,31 @@ local plugins = {
     },
     {
         "mfussenegger/nvim-dap",
-        config = function(_, opts)
-            require("core.utils").load_mappings("dap")
-        end
-    }, {
+        -- config = function(_, opts)
+        --     require("core.utils").load_mappings("dap")
+        -- end
+    }, 
+    {
         "mfussenegger/nvim-dap-python",
         ft = "python",
         dependencies = {"mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui"},
-        -- config = function(_, opts)
-            -- local path = "~/.local/share/nvim/mason/packages/debugpy/venv/bin/python"
-            -- require("dap-python").setup(path)
+        config = function(_, opts)
+            local dap = require('dap')
+            dap.configurations.python = {
+                {
+                    type = 'python';
+                    request = 'launch';
+                    name = "Launch file";
+                    program = "${file}";
+                    pythonPath = function()
+                        return 'C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
+                    end;
+                },
+            }
+            local path = 'C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
+            require("dap-python").setup(path)
             -- require("core.utils").load_mappings("dap_python")
-        -- end
+        end
     },
     {
         "williamboman/mason.nvim",
@@ -173,5 +186,14 @@ local plugins = {
             tdc.setup()
         end
     },
+    {
+        'puremourning/vimspector',
+        event="VeryLazy",
+        cmd = {"VimspectorInstall", "VimspectorUpdate"},
+        fn = {"vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue"},
+        config = function()
+            require("avkorz.vimspector").setup()
+        end
+    }
 }
 return plugins
