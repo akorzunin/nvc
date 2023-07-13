@@ -1,5 +1,7 @@
 vim.api.nvim_exec('language en_US', true)
 
+is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+
 function PrintTable( t, indent, done )
 	done = done or {}
 	indent = indent or 0
