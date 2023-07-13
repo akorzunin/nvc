@@ -22,6 +22,8 @@ My neovim config:
  Copy: `"+y`
  Paste: `"+gp`
 
+- Ctrl R in nvim commandline to paste from register
+
 LSP
 
 - prev/next suggestion Ctrl p/n
