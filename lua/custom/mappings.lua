@@ -20,7 +20,9 @@ M.general = {
 
 M.fugitive = {
   n = {
-    ["<leader>gs"] = {"<cmd> Git <CR>"}
+    ["<leader>gs"] = {"<cmd> Git <CR>"},
+    ["<leader>gf"] = {"<cmd> Git fetch <CR>"},
+    ["<leader>gp"] = {"<cmd> Git push <CR>"},
   }
 }
 
@@ -43,21 +45,5 @@ M.nvterm = {
   },
 }
 
--- M.nvimtree = {
---   git = {
---     enable = true,
---   },
---   renderer = {
---     highlight_git = true,
---     icons = {
---       show = {
---         git = true,
---       },
---     },
---   },
---   view = {
---     side = "right",
---   },
--- }
 
 return M
