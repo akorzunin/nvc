@@ -101,3 +101,18 @@ Ctrl hjkl - move cursor
 :sp slpit
 :vsp vertical split
 _x - close file as tab
+
+## Fonts
+
+Download fonts
+
+    git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
+    cd nerd-fonts
+    git sparse-checkout add patched-fonts/JetBrainsMono
+    git sparse-checkout add patched-fonts/FiraCode
+    ./install
+
+in vim commandline:
+
+    :GuiFont FiraCode Nerd Font Mono:h12
+

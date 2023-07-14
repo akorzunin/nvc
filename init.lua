@@ -1,6 +1,6 @@
 vim.api.nvim_exec('language en_US', true)
 
-is_windows = vim.loop.os_uname().sysname == "Windows_NT"
+IS_WINDOWS = vim.loop.os_uname().sysname == "Windows_NT"
 
 function PrintTable( t, indent, done )
 	done = done or {}
@@ -22,7 +22,7 @@ end
 -- old configs
 --require("avkorz")
 
-vim.g.vscode_snippets_path = "./snippets"
+vim.g.vscode_snippets_path = "C:\\Users\\avkorz\\AppData\\Local\\nvim\\snippets"
 
 -- nvchad configs
 require "core"

@@ -194,6 +194,10 @@ local plugins = {
         config = function()
             require("avkorz.vimspector").setup()
         end
+    },
+    {
+        "equalsraf/neovim-gui-shim",
+        event="VeryLazy",
     }
 }
 return plugins
