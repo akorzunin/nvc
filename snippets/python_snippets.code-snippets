@@ -1,0 +1,270 @@
+{
+    // Place your global snippets here. Each snippet is defined under a snippet name and has a scope, prefix, body and 
+    // description. Add comma separated ids of the languages where the snippet is applicable in the scope field. If scope 
+    // is left empty or omitted, the snippet gets applied to all languages. The prefix is what is 
+    // used to trigger the snippet and the body will be expanded and inserted. Possible variables are: 
+    // $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. 
+    // Placeholders with the same ids are connected.
+    // Example:
+    // "Print to console": {
+    // 	"scope": "javascript,typescript",
+    // 	"prefix": "log",
+    // 	"body": [
+    // 		"console.log('$1');",
+    // 		"$2"
+    // 	],
+    // 	"description": "Log output to console"
+    // }	
+    "main name": {
+        "scope": "python",
+        "prefix": "name",
+        "body": [
+            "if __name__ == '__main__':",
+        ],
+        "description": "Python contruction"
+    },	
+    "class snip": {
+        "scope": "python",
+        "prefix": "class",
+        "body": [
+            "class ${1:label}(object): ",
+            "    '''docstring for ${1:label}'''",
+            "    def __init__(self, ):",
+            "        super().__init__()",
+        ],
+        "description": "Python contruction"
+    },
+    "import pd": {
+        "scope": "python",
+        "prefix": "pd",
+        "body": [
+            "import pandas as pd",
+        ],
+    },	
+    "import np": {
+        "scope": "python",
+        "prefix": "np",
+        "body": [
+            "import numpy as np",
+        ],
+    },	
+    "load .env": {
+        "scope": "python",
+        "prefix": "env",
+        "body": [
+            "#load .env variables",
+            "import os",
+            "from dotenv import load_dotenv",
+            "load_dotenv()",
+        ],
+    },
+    "envvar": {
+        "scope": "python",
+        "prefix": "varenv",
+        "body": [
+            "${1:label} = os.getenv('${1:label}')",
+            
+        ],
+    },
+    "path_insert": {
+        "scope": "python",
+        "prefix": "path_insert",
+        "body": [
+            "import sys",
+            "sys.path.insert(1, '${1:label}')",
+        ],
+    },
+    "logging": {
+        "scope": "python",
+        "prefix": "logging",
+        "body": [
+            "import logging",
+            "DEBUG = __debug__ ",
+            "LOG_FILE_NAME = '${1:log_file_name}.log'",
+            "format = '%(asctime)s [%(levelname)s]: %(message)s'",
+            "logger = logging.basicConfig(",
+            "    filename=LOG_FILE_NAME if not DEBUG else None, ",
+            "    format=format,",
+            "    encoding='utf-8', ",
+            "    level=logging.DEBUG, ",
+            ")",
+            "if not DEBUG:",
+            "    logging.getLogger(logger).addHandler(logging.StreamHandler())",
+            
+        ],
+    },
+    "property_ro": {
+        "scope": "python",
+        "prefix": "ro_property",
+        "body": [
+            "@property",
+            "def ${1:label}(self):",
+            "    return self._${1:label}",
+        ],
+    },
+    "async_debug": {
+        "scope": "python",
+        "prefix": "async_debug",
+        "body": [
+            "import asyncio",
+            "loop = asyncio.get_event_loop()",
+            "async def bar():",
+            "    await ${1:body}",
+            "loop.run_until_complete(bar())",
+        ],
+    },
+    "async_debug_bot": {
+        "scope": "python",
+        "prefix": "async_debug_bot",
+        "body": [
+            "import asyncio",
+            "loop = bot.loop",
+            "async def bar():",
+            "    await ${1:body}",
+            "loop.run_until_complete(bar())",
+        ],
+    },
+    "async_def": {
+        "scope": "python",
+        "prefix": "asd",
+        "body": [
+            "async def ${1:label}(${2:args}):",
+            "    ${3:body}",
+        ],
+    },
+    "discord_slash_command": {
+        "scope": "python",
+        "prefix": "dsc",
+        "body": [
+            "@app_commands.command(name='${1:name}', description='${2:desc}')",
+            "@app_commands.describe(${3:params})",
+            "async def slash_${4:func}(self, interaction: discord.Interaction, ${5:args}):",
+            "    ctx = await self.get_ctx(interaction)",
+            "    ${6:body}",
+            "    await interaction.followup.send(content=$7)",
+        ],
+
+    },
+    "class_pydantic": {
+        "scope": "python",
+        "prefix": "class_pydantic",
+        "body": [
+            "class ${1:class_name}(BaseModel):",
+            "    ${2:body}",
+        ],
+    },
+    "plotly go": {
+        "scope": "python",
+        "prefix": "go",
+        "body": [
+            "import plotly.graph_objects as go",
+        ],
+    },
+    "plotly px": {
+        "scope": "python",
+        "prefix": "px",
+        "body": [
+            "import plotly.express as px",
+        ],
+    },
+    "datetime": {
+        "scope": "python",
+        "prefix": "dt",
+        "body": [
+            "from datetime import datetime",
+        ],
+    },
+    "widget": {
+        "scope": "python",
+        "prefix": "widgets",
+        "body": [
+            "import ipywidgets as widgets",
+        ],
+    },
+    "autoreload": {
+        "scope": "python",
+        "prefix": "autoreload",
+        "body": [
+            "%load_ext autoreload",
+            "%autoreload 2",
+        ],
+    },
+    "test_": {
+        "scope": "python",
+        "prefix": "ptest",
+        "body": [
+            "def test_${1:name}() -> None:",
+            "    $2",
+        ],
+    },
+    "pickle read": {
+        "scope": "python",
+        "prefix": "pread",
+        "body": [
+            "import pickle",
+            "with open('$1', 'rb') as f:",
+            "    $2 = pickle.load(f)",
+        ],
+    },
+    "json save": {
+        "scope": "python",
+        "prefix": "jsonsave",
+        "body": [
+            "import json",
+            "with open('${1:path_or_filename}', 'w', encoding='utf-8') as f:",
+            "    json.dump(${2:object_to_save}, f, ensure_ascii=False)",
+        ],
+    },
+    "json read": {
+        "scope": "python",
+        "prefix": "jsonread",
+        "body": [
+            "import json",
+            "with open('${6:path_or_filename}', 'r', encoding='utf-8') as f:",
+            "    ${6:var_w_file_content} = json.load(f)",
+        ],
+    },
+    "pickle save": {
+        "scope": "python",
+        "prefix": "psave",
+        "body": [
+            "import pickle",
+            "with open('$1', 'wb') as f:",
+            "    pickle.dump($2, f)",
+        ],
+    },
+    "pprint": {
+        "scope": "python",
+        "prefix": "pp",
+        "body": [
+            "from pprint import pprint",
+            "pprint($1)",
+        ],
+    },
+    "todo me": {
+        "scope": "python",
+        "prefix": "tdm",
+        "body": [
+            "# TODO avkorz ",
+        ],
+    },
+    "pytest enable stdout": {
+        "scope": "python",
+        "prefix": "pytest_stdout",
+        "description": "Enable print function in debug consoe while debugging w/pytest",
+        "body": [
+            "# put capsys into test func arg",
+            "with capsys.disabled():",
+            "    $1"
+        ],
+    },
+    "log info": {
+        "scope": "python",
+        "prefix": "loginfo",
+        "body": [
+            "logging.info(f'{$1=}')",
+        ],
+    },
+    
+
+}
