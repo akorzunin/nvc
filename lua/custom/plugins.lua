@@ -1,44 +1,63 @@
 local plugins = {
     {
         "nvim-tree/nvim-web-devicons",
-        event="VeryLazy"
+        event = "VeryLazy"
     },
     {
         "tpope/vim-fugitive",
-        event="VeryLazy"
+        event = "VeryLazy"
     },
     {
         "mbbill/undotree",
-        lazy = false
+        event = "VeryLazy"
     },
     {
         "theprimeagen/harpoon",
-        lazy = false
+        event = "VeryLazy"
+    },
+    {
+        "rcarriga/nvim-dap-ui",
+        dependencies = "mfussenegger/nvim-dap",
+        config = function()
+            local dap = require("dap")
+            local dapui = require("dapui")
+            dapui.setup()
+            dap.listeners.after.event_initialized["dapui_config"] = function()
+                dapui.open()
+            end
+            dap.listeners.before.event_terminated["dapui_config"] = function()
+                dapui.close()
+            end
+            dap.listeners.before.event_exited["dapui_config"] = function()
+                dapui.close()
+            end
+        end
     },
     {
         "mfussenegger/nvim-dap",
-        -- config = function(_, opts)
-        --     require("core.utils").load_mappings("dap")
-        -- end
-    }, 
+        config = function(_, opts)
+            require("core.utils").load_mappings("dap")
+        end
+    },
     {
         "mfussenegger/nvim-dap-python",
         ft = "python",
-        dependencies = {"mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui"},
+        dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
         config = function(_, opts)
+            require("core.utils").load_mappings("dap_python")
             local dap = require('dap')
             dap.configurations.python = {
                 {
-                    type = 'python';
-                    request = 'launch';
-                    name = "Launch file";
-                    program = "${file}";
+                    type = 'python',
+                    request = 'launch',
+                    name = "Launch file",
+                    program = "${file}",
                     pythonPath = function()
-                        return 'C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
-                    end;
+                        return 'C:\\Users\\akorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
+                    end,
                 },
             }
-            local path = 'C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
+            local path = 'C:\\Users\\akorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
             require("dap-python").setup(path)
             -- require("core.utils").load_mappings("dap_python")
         end
@@ -46,9 +65,9 @@ local plugins = {
     {
         "williamboman/mason.nvim",
         opts = {
-            ensure_installed = {"black", "debugpy", "mypy", "ruff", "pyright"}
+            ensure_installed = { "black", "debugpy", "mypy", "ruff", "pyright" }
         }
-    }, 
+    },
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -59,7 +78,7 @@ local plugins = {
     {
         'nvim-telescope/telescope.nvim',
         tag = '0.1.1',
-        dependencies = {'nvim-lua/plenary.nvim'},
+        dependencies = { 'nvim-lua/plenary.nvim' },
         -- config = function()
         --     local project_actions = require("telescope._extensions.project.actions")
         --     extensions = {
@@ -88,7 +107,7 @@ local plugins = {
     },
     {
         "folke/trouble.nvim",
-        dependencies = {"nvim-tree/nvim-web-devicons"},
+        dependencies = { "nvim-tree/nvim-web-devicons" },
         opts = {
             -- your configuration comes here
             -- or leave it empty to use the default settings
@@ -109,7 +128,7 @@ local plugins = {
     {
         'VonHeikemen/lsp-zero.nvim',
         branch = 'v2.x',
-        lazy = true,
+        event = "VeryLazy",
         config = function()
             -- This is where you modify the settings for lsp-zero
             -- Note: autocompletion settings will not take effect
@@ -120,8 +139,8 @@ local plugins = {
     {
         'neovim/nvim-lspconfig',
         cmd = 'LspInfo',
-        event = {'BufReadPre', 'BufNewFile'},
-        dependencies = {{'hrsh7th/cmp-nvim-lsp'}, {'williamboman/mason-lspconfig.nvim'}, {
+        event = { 'BufReadPre', 'BufNewFile' },
+        dependencies = { { 'hrsh7th/cmp-nvim-lsp' }, { 'williamboman/mason-lspconfig.nvim' }, {
             'williamboman/mason.nvim',
             ensure_installed = {
                 "black",
@@ -132,7 +151,7 @@ local plugins = {
             build = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end
-        }},
+        } },
         config = function()
             -- This is where all the LSP shenanigans will live
 
@@ -149,10 +168,10 @@ local plugins = {
 
             lsp.setup()
         end
-    }, 
+    },
     {
         "jose-elias-alvarez/null-ls.nvim",
-        ft = {"python"},
+        ft = { "python" },
         opts = function()
             return require "custom.configs.null-ls"
         end
@@ -172,6 +191,25 @@ local plugins = {
     -- },
     -- TODO: and moe stuff
     {
+        "ahmedkhalf/project.nvim",
+        event = "VeryLazy",
+        config = function()
+            require("project_nvim").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            }
+            require("nvim-tree").setup({
+                sync_root_with_cwd = true,
+                respect_buf_cwd = true,
+                update_focused_file = {
+                    enable = true,
+                    update_root = true
+                },
+            })
+        end
+    },
+    {
         "folke/todo-comments.nvim",
         event = "VeryLazy",
         dependencies = { "nvim-lua/plenary.nvim" },
@@ -180,7 +218,7 @@ local plugins = {
             -- or leave it empty to use the default settings
             -- refer to the configuration section below
         },
-        config = function ()
+        config = function()
             local tdc = require "todo-comments"
             tdc.opts = {}
             tdc.setup()
@@ -188,16 +226,16 @@ local plugins = {
     },
     {
         'puremourning/vimspector',
-        event="VeryLazy",
-        cmd = {"VimspectorInstall", "VimspectorUpdate"},
-        fn = {"vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue"},
+        event = "VeryLazy",
+        cmd = { "VimspectorInstall", "VimspectorUpdate" },
+        fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
         config = function()
             require("avkorz.vimspector").setup()
         end
     },
     {
         "equalsraf/neovim-gui-shim",
-        event="VeryLazy",
+        event = "VeryLazy",
     }
 }
 return plugins
