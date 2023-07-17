@@ -45,6 +45,7 @@ local plugins = {
         dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
         config = function(_, opts)
             require("core.utils").load_mappings("dap_python")
+            local path = 'C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
             local dap = require('dap')
             dap.configurations.python = {
                 {
@@ -53,11 +54,10 @@ local plugins = {
                     name = "Launch file",
                     program = "${file}",
                     pythonPath = function()
-                        return 'C:\\Users\\akorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
+                        return path
                     end,
                 },
             }
-            local path = 'C:\\Users\\akorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe'
             require("dap-python").setup(path)
             -- require("core.utils").load_mappings("dap_python")
         end
@@ -169,13 +169,13 @@ local plugins = {
             lsp.setup()
         end
     },
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        ft = { "python" },
-        opts = function()
-            return require "custom.configs.null-ls"
-        end
-    },
+    -- {
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     ft = { "python" },
+    --     opts = function()
+    --         return require "custom.configs.null-ls"
+    --     end
+    -- },
     -- TODO: some stuff
     -- NOTE: some note
     -- {
