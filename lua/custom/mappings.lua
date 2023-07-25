@@ -14,6 +14,7 @@ M.general = {
     ["<leader>wp"] = { '"+gp', "paste from Windows clipboard" },
     ["<A-j>"] = {"<cmd> move +1 <CR>", "Move line down"},
     ["<A-k>"] = {"<cmd> move -2 <CR>", "Move line up"},
+    ["<C-p>"] = {"<cmd> Telescope projects <CR>", "Projects"},
   },
   v = {
     ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
