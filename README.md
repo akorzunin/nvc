@@ -116,3 +116,13 @@ in vim commandline:
 
     :GuiFont FiraCode Nerd Font Mono:h12
 
+
+## Install fd
+
+to make python venv selector work need to install fd
+
+on windows from admin shell: 
+```
+choco install fd
+```
+
