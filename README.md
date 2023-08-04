@@ -126,3 +126,12 @@ on windows from admin shell:
 choco install fd
 ```
 
+## Copy error text from commandline
+
+```lua
+let @* = execute('messages')
+```
+
+## Format whole file
+
+   :lua vim.lsp.buf.format() 
