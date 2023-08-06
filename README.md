@@ -138,3 +138,14 @@ choco install fd
 install delve w/:
 
     go install github.com/go-delve/delve/cmd/dlv@latest
+=======
+## Copy error text from commandline
+
+```lua
+let @* = execute('messages')
+```
+
+## Format whole file
+
+   :lua vim.lsp.buf.format() 
+>>>>>>> a6bedf8b131e44e0481fbaabe51ddcf27faf41c6
