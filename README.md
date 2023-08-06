@@ -22,6 +22,8 @@ My neovim config:
  Copy: `"+y`
  Paste: `"+gp`
 
+- Ctrl R in nvim commandline to paste from register
+
 LSP
 
 - prev/next suggestion Ctrl p/n
@@ -80,3 +82,69 @@ choco install ripgrep
 ```
 choco install zig
 ```
+
+install fonts from [here](https://www.nerdfonts.com/font-downloadshttps://www.nerdfonts.com/font-downloads)
+
+## nvchad
+
+### nvimTree
+
+a - add file/folder
+_m - mark file
+c p - copy paste file
+r - rename file
+Ctrl K - file info
+
+### window navigation
+
+Ctrl hjkl - move cursor
+:sp slpit
+:vsp vertical split
+_x - close file as tab
+
+## Fonts
+
+Download fonts
+
+    git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
+    cd nerd-fonts
+    git sparse-checkout add patched-fonts/JetBrainsMono
+    git sparse-checkout add patched-fonts/FiraCode
+    ./install
+
+in vim commandline:
+
+    :GuiFont FiraCode Nerd Font Mono:h12
+
+
+## Install fd
+
+to make python venv selector work need to install fd
+
+on windows from admin shell: 
+```
+choco install fd
+```
+
+## Copy error text from commandline
+
+```lua
+let @* = execute('messages')
+```
+
+## Format whole file (F3 or A-F)
+
+   :lua vim.lsp.buf.format()
+
+### substitute in selection
+
+- go t visual
+- selec some text
+- run `:s`
+- type /`string to remove`/`string to put`
+
+
+### go debugger
+install delve w/:
+
+    go install github.com/go-delve/delve/cmd/dlv@latest

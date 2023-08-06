@@ -1,4 +1,7 @@
 plugin/packer_compiled.lua
 .netrwhist
 .obsidian
+coc-settings.json
+.luarc.json
+lazy-lock.json
 
