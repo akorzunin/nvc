@@ -7,6 +7,6 @@ local lspconfig = require("lspconfig")
 lspconfig.pyright.setup({
     on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = {"python"},
+    filetypes = {"python", "go"},
 })
 

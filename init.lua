@@ -47,3 +47,7 @@ dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"
 
+-- TODO: move to apropriate place later
+-- Set breakpon
+vim.fn.sign_define('DapBreakpoint', {text='•', texthl='red', linehl='', numhl=''})
+require("dap-go").setup({})

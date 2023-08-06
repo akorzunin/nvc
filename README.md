@@ -126,3 +126,15 @@ on windows from admin shell:
 choco install fd
 ```
 
+### substitute in selection
+
+- go t visual
+- selec some text
+- run `:s`
+- type /`string to remove`/`string to put`
+
+
+### go debugger
+install delve w/:
+
+    go install github.com/go-delve/delve/cmd/dlv@latest
