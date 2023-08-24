@@ -11,10 +11,6 @@ local plugins = {
         "mbbill/undotree",
         event = "VeryLazy"
     },
-    {
-        "theprimeagen/harpoon",
-        event = "VeryLazy"
-    },
     -- DEBUGGER
     {
         "mfussenegger/nvim-dap",
@@ -354,6 +350,19 @@ local plugins = {
 
         },
         event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+    },
+    {
+        "folke/neodev.nvim",
+        event="*.lua",
+    },
+    {
+        "NeogitOrg/neogit",
+        dependencies = {
+            "nvim-lua/plenary.nvim",         -- required
+            "nvim-telescope/telescope.nvim", -- optional
+            "sindrets/diffview.nvim",        -- optional
+        },
+        config = true
     }
 }
 return plugins
