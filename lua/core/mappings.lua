@@ -265,9 +265,11 @@ M.telescope = {
         ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "Help page" },
         ["<leader>fo"] = { "<cmd> Telescope oldfiles <CR>", "Find oldfiles" },
         ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "Find keymaps" },
-        ["<leader>fc"] = { "<cmd> Telescope commads <CR>", "Find commads" },
+        ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "Find commads" },
         ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find in registers" },
         ["<leader>fz"] = { "<cmd> Telescope current_buffer_fuzzy_find <CR>", "Find in current buffer" },
+        ["<leader>fe"] = { "<cmd> Telescope resume <CR>", "R[e]sume last Telescope session" },
+        ["<leader>fi"] = { "<cmd> Telescope builtin <CR>", "Find in all avaliable Telescope commands" },
 
         -- git
         ["<leader>cm"] = { "<cmd> Telescope git_commits <CR>", "Git commits" },
