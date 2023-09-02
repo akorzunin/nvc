@@ -268,15 +268,6 @@ local plugins = {
         end
     },
     {
-        'puremourning/vimspector',
-        event = "VeryLazy",
-        cmd = { "VimspectorInstall", "VimspectorUpdate" },
-        fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
-        config = function()
-            require("avkorz.vimspector").setup()
-        end
-    },
-    {
         "equalsraf/neovim-gui-shim",
         event = "VeryLazy",
     },
@@ -353,7 +344,7 @@ local plugins = {
     },
     {
         "folke/neodev.nvim",
-        event="*.lua",
+        event = "VeryLazy",
     },
     {
         "NeogitOrg/neogit",
