@@ -106,7 +106,18 @@ local plugins = {
     {
         "williamboman/mason.nvim",
         opts = {
-            ensure_installed = { "black", "debugpy", "mypy", "ruff", "pyright" }
+            ensure_installed = {
+                "lua-language-server",
+                "html-lsp",
+                "tailwindcss-language-server",
+                "black",
+                "debugpy",
+                "mypy",
+                "ruff",
+                "ruff-lsp",
+                "pyright",
+                "gopls"
+            }
         }
     },
     {
@@ -185,12 +196,6 @@ local plugins = {
         event = { 'BufReadPre', 'BufNewFile' },
         dependencies = { { 'hrsh7th/cmp-nvim-lsp' }, { 'williamboman/mason-lspconfig.nvim' }, {
             'williamboman/mason.nvim',
-            ensure_installed = {
-                "black",
-                "ruff",
-                "mypy",
-                "pyright",
-            },
             build = function()
                 pcall(vim.cmd, 'MasonUpdate')
             end
