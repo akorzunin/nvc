@@ -6,7 +6,40 @@ My neovim config:
 - Windows
     %appdata%\..\Local\nvim
 - Linux
-    ~./config/nvim
+    mkdir -p ~/.config/nvim && cd $_
+
+## Install
+
+### Install neovim
+
+```bash
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod u+x nvim.appimage
+sudo cp nvim.appimage /usr/bin/nvim 
+sudo chown $USER /usr/bin/nvim
+```
+
+OR
+
+```bash 
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt install -y neovim
+```
+
+### Install configs
+
+```bash
+mkdir -p ~/.config/nvim && cd $_
+git clone https://github.com/akorzunin/nvc.git .
+```
+
+### Install dependencies
+
+```bash
+sudo apt install fd-find
+sudo ln -s $(which fdfind) /usr/bin/fd
+sudo apt install ripgrep
+```
 
 ## Hotkeys
 
