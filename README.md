@@ -12,34 +12,8 @@ My neovim config:
 
 ### Install neovim
 
-```bash
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-sudo cp nvim.appimage /usr/bin/nvim 
-sudo chown $USER /usr/bin/nvim
-```
-
-OR
-
-```bash 
-sudo add-apt-repository ppa:neovim-ppa/unstable
-sudo apt install -y neovim
-```
-
-### Install configs
-
-```bash
-mkdir -p ~/.config/nvim && cd $_
-git clone https://github.com/akorzunin/nvc.git .
-```
-
-### Install dependencies
-
-```bash
-sudo apt install fd-find
-sudo ln -s $(which fdfind) /usr/bin/fd
-sudo apt install ripgrep
-```
+Use scripts from this Gist
+https://gist.github.com/akorzunin/4dfad794fc658502e5c62379191eb4f0
 
 ## Hotkeys
 
@@ -73,51 +47,6 @@ Git (`Space gs` view)
 - Discard file X
 -
 
-## Plugins
-
-### Telescope
-
-- find in git repo - ctrl p
-- grep - ps
-- in folder - pf
-
-### Harpoon
-
-- hook file Space a
-- scroll files Ctrl t / h
-- list hooked files Ctrl e
-Undotree
-- Space u
-- Ctrl w arrow
-- Close - q
-Others
-- Show window w/ git status - Space gs
-
-## Installation
-
-### Windows
-
-- install packer
-<https://github.com/wbthomason/packer.nvim#quickstart>
-
-```
-git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim"
-```
-
-- for telescope (use admin cmd)
-
-```
-choco install ripgrep
-```
-
-- for Treesitter (use admin cmd)
-
-```
-choco install zig
-```
-
-install fonts from [here](https://www.nerdfonts.com/font-downloadshttps://www.nerdfonts.com/font-downloads)
-
 ## nvchad
 
 ### nvimTree
@@ -137,27 +66,9 @@ _x - close file as tab
 
 ## Fonts
 
-Download fonts
-
-    git clone --filter=blob:none --sparse git@github.com:ryanoasis/nerd-fonts
-    cd nerd-fonts
-    git sparse-checkout add patched-fonts/JetBrainsMono
-    git sparse-checkout add patched-fonts/FiraCode
-    ./install
-
 in vim commandline:
 
     :GuiFont FiraCode Nerd Font Mono:h12
-
-
-## Install fd
-
-to make python venv selector work need to install fd
-
-on windows from admin shell: 
-```
-choco install fd
-```
 
 ## Copy error text from commandline
 
