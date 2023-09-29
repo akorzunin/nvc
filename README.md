@@ -4,7 +4,7 @@ My neovim config:
 `nvim` folder w/ all settings
 
 - Windows
-    %appdata%\..\Local\nvim
+    %appdata%\\..\Local\nvim
 - Linux
     mkdir -p ~/.config/nvim && cd $_
 
