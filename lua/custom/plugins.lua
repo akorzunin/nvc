@@ -364,8 +364,9 @@ local plugins = {
         "andweeb/presence.nvim",
         event = "VeryLazy",
         opts = {
-            neovim_image_text = "aboba",
-        }
+            main_image        = "file",
+            neovim_image_text = "Neovim",
+        
     }
 }
 return plugins
