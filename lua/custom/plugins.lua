@@ -359,6 +359,13 @@ local plugins = {
             "sindrets/diffview.nvim",        -- optional
         },
         config = true
+    },
+    {
+        "andweeb/presence.nvim",
+        event = "VeryLazy",
+        opts = {
+            neovim_image_text = "aboba",
+        }
     }
 }
 return plugins
