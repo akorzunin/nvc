@@ -359,6 +359,14 @@ local plugins = {
             "sindrets/diffview.nvim",        -- optional
         },
         config = true
+        "andweeb/presence.nvim",
+        -- event = "VeryLazy",
+        opts = {
+            main_image          = "file",
+            neovim_image_text   = "Neovim",
+            auto_update         = true,
+            auto_session_enable = false,
+        }
     },
     {
         "andweeb/presence.nvim",
