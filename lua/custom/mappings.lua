@@ -72,4 +72,10 @@ M.dap_python = {
     }
 }
 
+M.lazygit = {
+    n = {
+        ["<leader>g"] = { "<cmd> LazyGit <CR>"}
+    }
+}
+
 return M

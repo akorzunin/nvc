@@ -217,27 +217,6 @@ local plugins = {
             lsp.setup()
         end
     },
-    -- {
-    --     "jose-elias-alvarez/null-ls.nvim",
-    --     ft = { "python" },
-    --     opts = function()
-    --         return require "custom.configs.null-ls"
-    --     end
-    -- },
-    -- TODO: some stuff
-    -- NOTE: some note
-    -- {
-    --     "ahmedkhalf/project.nvim",
-    --     lazy = false,
-    --     config = function()
-    --         require("project_nvim").setup {
-    --             -- your configuration comes here
-    --             -- or leave it empty to use the default settings
-    --             -- refer to the configuration section below
-    --         }
-    --     end
-    -- },
-    -- TODO: and moe stuff
     {
         "ahmedkhalf/project.nvim",
         event = "VeryLazy",
@@ -352,13 +331,6 @@ local plugins = {
         event = "VeryLazy",
     },
     {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "nvim-telescope/telescope.nvim", -- optional
-            "sindrets/diffview.nvim",        -- optional
-        },
-        config = true
         "andweeb/presence.nvim",
         -- event = "VeryLazy",
         opts = {
@@ -369,12 +341,14 @@ local plugins = {
         }
     },
     {
-        "andweeb/presence.nvim",
+        "kdheepak/lazygit.nvim",
         event = "VeryLazy",
-        opts = {
-            main_image        = "file",
-            neovim_image_text = "Neovim",
-        
-    }
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            print('pepe')
+        end
+    },
 }
 return plugins
