@@ -10,20 +10,34 @@ M.disabled = {
 
 M.general = {
     n = {
-        ["<leader>pv"] = { "<cmd> NvimTreeToggle <CR>", "Open file eplorer" },
+        -- formatting
+        ["<A-F>"]      = { "<cmd> lua vim.lsp.buf.format() <CR>", "Format buffer" },
+        -- code nvigation
+        ["<A-up>"]     = { "<Plug>MoveLineUp", "Move line up" },
+        ["<A-down>"]   = { "<Plug>MoveLineDown", "Move line up" },
+        -- debugger
+        ["<F5>"]       = { "<cmd> lua require'dap'.continue() <CR>", "Start debugger" },
+        ["<F9>"]       = { "<cmd> lua require'dap'.toggle_breakpoint() <CR>", "Toggle breakpoint" },
+        ["<F10>"]      = { "<cmd> lua require'dap'.step_over() <CR>", "Start debugger" },
+        ["<F11>"]      = { "<cmd> lua require'dap'.step_into() <CR>", "Start debugger" },
+        ["<F12>"]      = { "<cmd> lua require'dap'.step_out() <CR>", "Start debugger" },
         ["<leader>wp"] = { '"+gp', "paste from Windows clipboard" },
-        ["<A-j>"] = { "<cmd> move +1 <CR>", "Move line down" },
-        ["<A-k>"] = { "<cmd> move -2 <CR>", "Move line up" },
-        ["<C-p>"] = { "<cmd> Telescope projects <CR>", "Projects" },
-        ["<A-F>"] = { "<cmd> lua vim.lsp.buf.format() <CR>", "Format buffer" },
-        ["<F5>"] = { "<cmd> lua require'dap'.continue() <CR>", "Start debugger" },
-        ["<F9>"] = { "<cmd> lua require'dap'.toggle_breakpoint() <CR>", "Toggle breakpoint" },
-        ["<F10>"] = { "<cmd> lua require'dap'.step_over() <CR>", "Start debugger" },
-        ["<F11>"] = { "<cmd> lua require'dap'.step_into() <CR>", "Start debugger" },
-        ["<F12>"] = { "<cmd> lua require'dap'.step_out() <CR>", "Start debugger" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
+        -- code nvigation
+        ["<A-down>"]   = { "<Plug>MoveBlockDown", "Move selection down" },
+        ["<A-up>"]     = { "<Plug>MoveBlockUp", "Move selection up" },
+    }
+}
+
+M.telescope = {
+    n = {
+        ["<C-p>"] = { "<cmd> Telescope projects <CR>", "Projects" },
+        ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "View keymaps via Telescope" },
+        ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "View neovim commands via Telescope" },
+        ["<leader>fj"] = { "<cmd> Telescope jumplist <CR>", "Go to pevious cursor locations" },
+        ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "View paste register" },
     }
 }
 
@@ -74,7 +88,7 @@ M.dap_python = {
 
 M.lazygit = {
     n = {
-        ["<leader>g"] = { "<cmd> LazyGit <CR>"}
+        ["<leader>g"] = { "<cmd> LazyGit <CR>" }
     }
 }
 

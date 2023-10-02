@@ -348,5 +348,10 @@ local plugins = {
             "NvChad/nvterm",
         },
     },
+    {
+        "matze/vim-move",
+        event = "VeryLazy",
+    },
+
 }
 return plugins
