@@ -345,10 +345,8 @@ local plugins = {
         event = "VeryLazy",
         dependencies = {
             "nvim-lua/plenary.nvim",
+            "NvChad/nvterm",
         },
-        config = function()
-            print('pepe')
-        end
     },
 }
 return plugins
