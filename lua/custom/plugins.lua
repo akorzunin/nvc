@@ -127,37 +127,6 @@ local plugins = {
             require "custom.configs.lspconfig"
         end
     },
-    -- {
-    --     'nvim-telescope/telescope.nvim',
-    --     -- tag = '0.1.1',
-    --     dependencies = { 'nvim-lua/plenary.nvim' },
-    --     config = function()
-    --         require('telescope').load_extension('dap')
-    --         --     local project_actions = require("telescope._extensions.project.actions")
-    --         --     extensions = {
-    --         --         project = {
-    --         --             base_dirs = {
-    --         --                 '~/dev/src',
-    --         --                 {'~/dev/src2'},
-    --         --                 {'~/dev/src3', max_depth = 4},
-    --         --                 {path = '~/dev/src4'},
-    --         --                 {path = '~/dev/src5', max_depth = 2},
-    --         --             },
-    --         --             hidden_files = true, -- default: false
-    --         --             theme = "dropdown",
-    --         --             order_by = "asc",
-    --         --             search_by = "title",
-    --         --             sync_with_nvim_tree = true, -- default false
-    --         --             -- default for on_project_selected = find project files
-    --         --             on_project_selected = function(prompt_bufnr)
-    --         --                 -- Do anything you want in here. For example:
-    --         --                 project_actions.change_working_directory(prompt_bufnr, false)
-    --         --                 require("harpoon.ui").nav_file(1)
-    --         --             end
-    --         --         }
-    --         --     }
-    --     end,
-    -- },
     {
         "folke/trouble.nvim",
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -222,7 +191,7 @@ local plugins = {
         config = function()
             require("project_nvim").setup {
                 show_files = 'oldfiles',
-           }
+            }
             require("nvim-tree").setup({
                 sync_root_with_cwd = true,
                 respect_buf_cwd = true,
@@ -267,59 +236,15 @@ local plugins = {
             "<leader>vc", "<cmd>:VenvSelectCached<cr>"
         } },
         opts = {
-
-            -- auto_refresh (default: false). Will automatically start a new search every time VenvSelect is opened.
-            -- When its set to false, you can refresh the search manually by pressing ctrl-r. For most users this
-            -- is probably the best default setting since it takes time to search and you usually work within the same
-            -- directory structure all the time.
             auto_refresh = false,
-
-            -- search_venv_managers (default: true). Will search for Poetry/Pipenv/Anaconda virtual environments in their
-            -- default location. If you dont use the default location, you can
             search_venv_managers = true,
-
-            -- search_workspace (default: true). Your lsp has the concept of "workspaces" (project folders), and
-            -- with this setting, the plugin will look in those folders for venvs. If you only use venvs located in
-            -- project folders, you can set search = false and search_workspace = true.
             search_workspace = true,
-
-            -- path (optional, default not set). Absolute path on the file system where the plugin will look for venvs.
-            -- Only set this if your venvs are far away from the code you are working on for some reason. Otherwise its
-            -- probably better to let the VenvSelect search for venvs in parent folders (relative to your code). VenvSelect
-            -- searchs for your venvs in parent folders relative to what file is open in the current buffer, so you get
-            -- different results when searching depending on what file you are looking at.
-            -- path = "/home/username/your_venvs",
-
-            -- search (default: true). Search your computer for virtual environments outside of Poetry and Pipenv.
-            -- Used in combination with parents setting to decide how it searches.
-            -- You can set this to false to speed up the plugin if your virtual envs are in your workspace, or in Poetry
-            -- or Pipenv locations. No need to search if you know where they will be.
             search = true,
-
-            -- dap_enabled (default: false). When true, uses the selected virtual environment with the debugger.
-            -- require nvim-dap-python from https://github.com/mfussenegger/nvim-dap-python
-            -- require debugpy from https://github.com/microsoft/debugpy
-            -- require nvim-dap from https://github.com/mfussenegger/nvim-dap
             dap_enabled = false,
-
-            -- parents (default: 2) - Used when search = true only. How many parent directories the plugin will go up
-            -- (relative to where your open file is on the file system when you run VenvSelect). Once the parent directory
-            -- is found, the plugin will traverse down into all children directories to look for venvs. The higher
-            -- you set this number, the slower the plugin will usually be since there is more to search.
-            -- You may want to set this to to 0 if you specify a path in the path setting to avoid searching parent
-            -- directories.
             parents = 2,
-
-            -- name (default: venv) - The name of the venv directories to look for.
             name = "venv", -- NOTE: You can also use a lua table here for multiple names: {"venv", ".venv"}`
-
-            -- fd_binary_name (default: fd) - The name of the fd binary on your system.
             fd_binary_name = "fd",
-
-
-            -- notify_user_on_activate (default: true) - Prints a message that the venv has been activated
             notify_user_on_activate = true,
-
         },
         event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
     },
@@ -349,5 +274,23 @@ local plugins = {
         "matze/vim-move",
         event = "VeryLazy",
     },
+    {
+        'nvim-treesitter/nvim-treesitter-context',
+        event = "VeryLazy",
+        opts = {
+            enable = true,  -- Enable this plugin (Can be enabled/disabled later via commands)
+            max_lines = 0,  -- How many lines the window should span. Values <= 0 mean no limit.
+            min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+            line_numbers = true,
+            multiline_threshold = 20, -- Maximum number of lines to show for a single context
+            trim_scope = 'outer', -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+            mode = 'cursor', -- Line used to calculate context. Choices: 'cursor', 'topline'
+            -- Separator between context and content. Should be a single character string, like '-'.
+            -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
+            separator = nil,
+            zindex = 20, -- The Z-index of the context window
+            on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
+        }
+    }
 }
 return plugins

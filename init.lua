@@ -1,24 +1,24 @@
 IS_WINDOWS = vim.loop.os_uname().sysname == "Windows_NT"
 
 if IS_WINDOWS then
-	vim.api.nvim_exec('language en_US', true)
+    vim.api.nvim_exec('language en_US', true)
 end
 
-function PrintTable( t, indent, done )
-	done = done or {}
-	indent = indent or 0
-	done[t] = true
+function PrintTable(t, indent, done)
+    done = done or {}
+    indent = indent or 0
+    done[t] = true
 
-	for key, value in pairs(t) do
-		if type(value) == "table" and not done[value] then
-			done[value] = true
-			print(string.rep(" ", indent) .. key .. ":")
-			PrintTable(value, indent + 2, done)
-			done[value] = nil
-		else
-			print(string.rep(" ", indent) .. key .. " = " .. tostring(value))
-		end
-	end
+    for key, value in pairs(t) do
+        if type(value) == "table" and not done[value] then
+            done[value] = true
+            print(string.rep(" ", indent) .. key .. ":")
+            PrintTable(value, indent + 2, done)
+            done[value] = nil
+        else
+            print(string.rep(" ", indent) .. key .. " = " .. tostring(value))
+        end
+    end
 end
 
 -- old configs
@@ -51,5 +51,9 @@ require "plugins"
 
 -- TODO: move to apropriate place later
 -- Set breakpon
-vim.fn.sign_define('DapBreakpoint', {text='•', texthl='red', linehl='', numhl=''})
+vim.fn.sign_define('DapBreakpoint', { text = '•', texthl = 'red', linehl = '', numhl = '' })
 require("dap-go").setup({})
+
+local CMP = require("cmp")
+CMP.mapping["Down"] = CMP.mapping['<Tab>']
+CMP.mapping["Up"] = CMP.mapping['<S-Tab>']

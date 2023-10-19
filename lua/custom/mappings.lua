@@ -22,12 +22,18 @@ M.general = {
         ["<F11>"]      = { "<cmd> lua require'dap'.step_into() <CR>", "Start debugger" },
         ["<F12>"]      = { "<cmd> lua require'dap'.step_out() <CR>", "Start debugger" },
         ["<leader>wp"] = { '"+gp', "paste from Windows clipboard" },
+        ["<leader>ww"] = { '<cmd> set nowrap <CR>', "wrap: disable" },
+        ["<leader>we"] = { '<cmd> set wrap <CR>', "wrap: enable" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
         -- code nvigation
         ["<A-down>"]   = { "<Plug>MoveBlockDown", "Move selection down" },
         ["<A-up>"]     = { "<Plug>MoveBlockUp", "Move selection up" },
+    },
+    i = {
+        ["<A-down>"] = { "<Plug>MoveBlockDown", "Move selection down" },
+        ["<A-up>"]   = { "<Plug>MoveBlockUp", "Move selection up" },
     }
 }
 
