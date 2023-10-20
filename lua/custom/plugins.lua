@@ -64,7 +64,6 @@ local plugins = {
             end,
             -- position of virtual text, see `:h nvim_buf_set_extmark()`, default tries to inline the virtual text. Use 'eol' to set to end of line
             virt_text_pos = vim.fn.has 'nvim-0.10' == 1 and 'inline' or 'eol',
-
             -- experimental features:
             all_frames = false,     -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
             virt_lines = false,     -- show virtual lines instead of virtual text (will flicker!)

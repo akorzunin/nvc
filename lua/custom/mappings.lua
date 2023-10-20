@@ -22,8 +22,8 @@ M.general = {
         ["<F11>"]      = { "<cmd> lua require'dap'.step_into() <CR>", "Start debugger" },
         ["<F12>"]      = { "<cmd> lua require'dap'.step_out() <CR>", "Start debugger" },
         ["<leader>wp"] = { '"+gp', "paste from Windows clipboard" },
-        ["<leader>ww"] = { '<cmd> set nowrap <CR>', "wrap: disable" },
-        ["<leader>we"] = { '<cmd> set wrap <CR>', "wrap: enable" },
+        ["<leader>ww"] = { '<cmd> set wrap! <CR>', "toggle wrap" },
+        ["<leader>tc"] = { '<cmd> TSContextToggle <CR>', "toggle sticky headers" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
