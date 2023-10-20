@@ -51,7 +51,7 @@ M.fugitive = {
     n = {
         ["<leader>gs"] = { "<cmd> Git <CR>" },
         ["<leader>gf"] = { "<cmd> Git fetch <CR>" },
-        ["<leader>gp"] = { "<cmd> Git push <CR>" },
+        ["<leader>gp"] = { "<cmd> Git pull <CR>" },
     }
 }
 
@@ -94,7 +94,7 @@ M.dap_python = {
 
 M.lazygit = {
     n = {
-        ["<leader>g"] = { "<cmd> LazyGit <CR>" }
+        ["<leader>gg"] = { "<cmd> LazyGit <CR>" }
     }
 }
 
