@@ -189,7 +189,7 @@ local plugins = {
         "akorzunin/project.nvim",
         config = function()
             require("project_nvim").setup {
-                show_files = 'oldfiles',
+                show_files = 'builtin',
             }
             require("nvim-tree").setup({
                 sync_root_with_cwd = true,
