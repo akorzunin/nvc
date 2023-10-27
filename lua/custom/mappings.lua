@@ -23,7 +23,11 @@ M.general = {
         ["<F12>"]      = { "<cmd> lua require'dap'.step_out() <CR>", "Start debugger" },
         ["<leader>wp"] = { '"+gp', "paste from Windows clipboard" },
         ["<leader>ww"] = { '<cmd> set wrap! <CR>', "toggle wrap" },
-        ["<leader>tc"] = { '<cmd> TSContextToggle <CR>', "toggle sticky headers" },
+        ["<leader>ts"] = { '<cmd> TSContextToggle <CR>', "toggle sticky headers" },
+        -- lsp
+        ["<leader>ll"] = { "<cmd> LspInfo <CR>", "lsp info" },
+        ["<leader>ls"] = { "<cmd> LspStop <CR>", "stop lsp" },
+        ["<leader>lr"] = { "<cmd> LspRestart <CR>", "restart lsp" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
