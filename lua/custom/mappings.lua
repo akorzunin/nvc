@@ -32,8 +32,8 @@ M.general = {
         ["<A-up>"]     = { "<Plug>MoveBlockUp", "Move selection up" },
     },
     i = {
-        ["<A-down>"] = { "<Plug>MoveBlockDown", "Move selection down" },
-        ["<A-up>"]   = { "<Plug>MoveBlockUp", "Move selection up" },
+        ["<A-down>"] = { "<C-c> <Plug>MoveLineDown", "Move selection down" },
+        ["<A-up>"]   = { "<C-c> <Plug>MoveLineUp", "Move selection up" },
     }
 }
 
