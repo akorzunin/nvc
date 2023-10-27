@@ -102,4 +102,9 @@ M.lazygit = {
     }
 }
 
+M["presence.nvim"] = {
+    n = {
+        ['<leader>dd'] = { "<cmd> Lazy load presence.nvim <CR>", "enable discord presence" }
+    }
+}
 return M
