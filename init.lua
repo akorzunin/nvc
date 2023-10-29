@@ -3,8 +3,6 @@ if IS_WINDOWS then
     vim.api.nvim_exec("language en_US", true)
 end
 
-vim.g.vscode_snippets_path = "C:\\Users\\avkorz\\AppData\\Local\\nvim\\snippets"
-
 -- nvchad configs
 require "core"
 
@@ -40,3 +38,5 @@ require("dap-go").setup {}
 local CMP = require "cmp"
 CMP.mapping["Down"] = CMP.mapping["<Tab>"]
 CMP.mapping["Up"] = CMP.mapping["<S-Tab>"]
+
+require('snippets.lua_snippets')
