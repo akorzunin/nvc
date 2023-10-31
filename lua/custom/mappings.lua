@@ -28,6 +28,9 @@ M.general = {
         ["<leader>ll"] = { "<cmd> LspInfo <CR>", "lsp info" },
         ["<leader>ls"] = { "<cmd> LspStop <CR>", "stop lsp" },
         ["<leader>lr"] = { "<cmd> LspRestart <CR>", "restart lsp" },
+        -- Lazy
+        ["<leader>lz"] = { "<cmd> Lazy <CR>", "open Lazy plugin manager" },
+        ["<leader>lu"] = { "<cmd> Lazy update <CR>", "Lazy update plugins" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
@@ -38,6 +41,7 @@ M.general = {
     i = {
         ["<A-down>"] = { "<C-c> <Plug>MoveLineDown", "Move selection down" },
         ["<A-up>"]   = { "<C-c> <Plug>MoveLineUp", "Move selection up" },
+        ["<C-s>"]   = { "<C-c> <cmd> w <CR>", "Save in insert mode" },
     }
 }
 
