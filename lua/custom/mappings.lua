@@ -31,6 +31,12 @@ M.general = {
         -- Lazy
         ["<leader>lz"] = { "<cmd> Lazy <CR>", "open Lazy plugin manager" },
         ["<leader>lu"] = { "<cmd> Lazy update <CR>", "Lazy update plugins" },
+        -- work
+        ["<leader>ee"] = { "<cmd> e ++enc=cp1251 <CR>", "change encoding to Windows-1251" },
+        ["<leader>eu"] = { "<cmd> e ++enc=utf8 <CR>", "change encoding to utf8" },
+        ["<leader>sp"] = { "<cmd> set syntax=plsql <CR>", "set syntax to plsql" },
+        ["<leader>ss"] = { "<cmd> set syntax=sql <CR>", "set syntax to sql" },
+        ["<leader>gbb"] = { "<cmd> 0,3G blame <CR>", "view full git blame commit message" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
@@ -41,7 +47,7 @@ M.general = {
     i = {
         ["<A-down>"] = { "<C-c> <Plug>MoveLineDown", "Move selection down" },
         ["<A-up>"]   = { "<C-c> <Plug>MoveLineUp", "Move selection up" },
-        ["<C-s>"]   = { "<C-c> <cmd> w <CR>", "Save in insert mode" },
+        ["<C-s>"]    = { "<C-c> <cmd> w <CR>", "Save in insert mode" },
     }
 }
 
