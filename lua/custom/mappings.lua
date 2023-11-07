@@ -37,6 +37,7 @@ M.general = {
         ["<leader>sp"] = { "<cmd> set syntax=plsql <CR>", "set syntax to plsql" },
         ["<leader>ss"] = { "<cmd> set syntax=sql <CR>", "set syntax to sql" },
         ["<leader>gbb"] = { "<cmd> 0,3G blame <CR>", "view full git blame commit message" },
+        ["<leader>gd"] = { function () vim.lsp.buf.declaration() end, "Go to declaration" },
     },
     v = {
         ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
