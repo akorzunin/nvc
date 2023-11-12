@@ -1,3 +1,5 @@
+DEBUG = false
+-- DEBUG = true
 require "globals"
 if IS_WINDOWS then
     vim.api.nvim_exec("language en_US", true)
