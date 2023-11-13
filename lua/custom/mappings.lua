@@ -150,4 +150,10 @@ M["presence.nvim"] = {
     },
   },
 }
+
+M["nvim-tree"] = {
+  n = {
+    ["<leader>tt"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvim-tree" },
+  },
+}
 return M
