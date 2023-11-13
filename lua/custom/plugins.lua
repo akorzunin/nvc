@@ -205,9 +205,9 @@ local plugins = {
       require("project_nvim").setup {
         show_files = "filtered_builtin",
         list = {
-          oldfiles = true,
-          find_files = true,
-          live_grep = true,
+          "oldfiles",
+          "find_files",
+          "live_grep",
         },
       }
       require("nvim-tree").setup {
