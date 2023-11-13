@@ -25,5 +25,6 @@ vim.opt.scrolloff = 8
 vim.opt.updatetime = 50
 
 vim.g.lua_snippets_path = vim.fn.stdpath "config" .. "\\snipppets\\lua_snippets"
-local vscode_snippets_path = vim.fn.stdpath "config" .. "\\snippets\\vscode_snippets"
+local vscode_snippets_path = vim.fn.stdpath "config"
+  .. "\\snippets\\vscode_snippets"
 vim.g.vscode_snippets_path = vscode_snippets_path

@@ -1,5 +1,5 @@
 M = {}
-M.ls = require("luasnip")
+M.ls = require "luasnip"
 -- some shorthands...
 M.s = M.ls.snippet
 M.sn = M.ls.snippet_node

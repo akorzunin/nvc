@@ -1,1 +1,1 @@
-require("snippets.lua_snippets.all")
+require "snippets.lua_snippets.all"
