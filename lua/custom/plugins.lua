@@ -195,6 +195,8 @@ local plugins = {
     dir = (function()
       if DEBUG and IS_WINDOWS then
         return "C:\\Users\\akorz\\Documents\\project.nvim"
+      elseif DEBUG and not IS_WINDOWS then
+        return "~/Documents/project.nvim"
       end
       return nil
     end)(),
