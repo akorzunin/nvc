@@ -42,3 +42,6 @@ CMP.mapping["Down"] = CMP.mapping["<Tab>"]
 CMP.mapping["Up"] = CMP.mapping["<S-Tab>"]
 
 require "snippets.lua_snippets"
+
+-- load wk groups
+require "custom.whichkey_groups"
