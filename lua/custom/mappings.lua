@@ -156,4 +156,47 @@ M["nvim-tree"] = {
     ["<leader>tt"] = { "<cmd> NvimTreeToggle <CR>", "toggle nvim-tree" },
   },
 }
+
+M.lsp = {
+  n = {
+    ["<leader>jd"] = {
+      "<cmd> lua vim.lsp.buf.definition() <CR>",
+      "jump to definition",
+    },
+    ["<leader>jD"] = {
+      "<cmd> lua vim.lsp.buf.declaration() <CR>",
+      "jump to declaration",
+    },
+    ["<leader>jr"] = {
+      "<cmd> lua vim.lsp.buf.references() <CR>",
+      "jump to references",
+    },
+    ["<leader>ji"] = {
+      "<cmd> lua vim.lsp.buf.implementation() <CR>",
+      "jump to implementation",
+    },
+    --  Telescope commands for LSP
+    ["<leader>jff"] = {
+      "<cmd> :Telescope builtin default_text=lsp previewer=false <CR>",
+      "lsp biltins",
+    },
+    ["<leader>jfd"] = {
+      "<cmd> :Telescope lsp_definition <CR>",
+      "telescope definition",
+    },
+    ["<leader>jfD"] = {
+      "<cmd> :Telescope lsp_declaration <CR>",
+      "telescope declaration",
+    },
+    ["<leader>jfr"] = {
+      "<cmd> :Telescope lsp_references <CR>",
+      "telescope references",
+    },
+    ["<leader>jfi"] = {
+      "<cmd> :Telescope lsp_implementation <CR>",
+      "telescope implementation",
+    },
+  },
+}
+
 return M
