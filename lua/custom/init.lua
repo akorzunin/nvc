@@ -8,13 +8,13 @@ opt.expandtab = true
 opt.autoindent = true
 opt.smartindent = true
 
-opt.colorcolumn = "79"
+opt.colorcolumn = "80"
 
 opt.nu = true
 opt.relativenumber = true
 
 opt.wrap = true
-opt.wrapmargin = 79
+opt.wrapmargin = 80
 
 vim.opt.incsearch = true
 
