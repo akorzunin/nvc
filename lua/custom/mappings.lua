@@ -88,6 +88,10 @@ M.telescope = {
       "Go to pevious cursor locations",
     },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "View paste register" },
+    ["<leader>fff"] = {
+      "<cmd> Telescope builtin previewer=false <CR>",
+      "View telescope builtins",
+    },
   },
 }
 
