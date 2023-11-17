@@ -45,3 +45,16 @@ require "snippets.lua_snippets"
 
 -- load wk groups
 require "custom.whichkey_groups"
+
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local arg = vim.api.nvim_exec("arg", true)
+    if arg == nil or arg == "" then
+      vim.defer_fn(function()
+        -- temporary solution, need to explisitly wait for Lazy -> Telescope -> project.nvim
+        -- to load
+        vim.cmd "Telescope projects"
+      end, 50)
+    end
+  end,
+})
