@@ -4,10 +4,10 @@ require "globals"
 if IS_WINDOWS then
   vim.api.nvim_exec("language en_US", true)
 end
-
+local default_config = require "core.default_config"
+default_config.lazy_nvim.change_detection = { enabled = false }
 -- nvchad configs
 require "core"
-
 local custom_init_path =
   vim.api.nvim_get_runtime_file("lua/custom/init.lua", false)[1]
 
