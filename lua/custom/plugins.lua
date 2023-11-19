@@ -338,5 +338,10 @@ local plugins = {
       require("nvterm").setup(opts)
     end,
   },
+  {
+    "simrat39/symbols-outline.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
 return plugins
