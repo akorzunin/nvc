@@ -26,6 +26,7 @@ M.general = {
     ["<F12>"] = { "<cmd> lua require'dap'.step_out() <CR>", "Start debugger" },
     ["<leader>wp"] = { '"+gp', "paste from Windows clipboard" },
     ["<leader>ww"] = { "<cmd> set wrap! <CR>", "toggle wrap" },
+    ["<leader>wn"] = { "<cmd> NoNeckPain <CR>", "wrap with NoNeckPain" },
     ["<leader>ts"] = { "<cmd> TSContextToggle <CR>", "toggle sticky headers" },
     -- lsp
     ["<leader>ll"] = { "<cmd> LspInfo <CR>", "lsp info" },

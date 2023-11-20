@@ -13,9 +13,6 @@ opt.colorcolumn = "80"
 opt.nu = true
 opt.relativenumber = true
 
-opt.wrap = true
-opt.wrapmargin = 80
-
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true

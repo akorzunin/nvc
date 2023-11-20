@@ -348,5 +348,14 @@ local plugins = {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    versio = "*",
+    event = "VeryLazy",
+    opts = {
+      -- matches exactly 121 col in buffer
+      width = 130,
+    },
+  },
 }
 return plugins
