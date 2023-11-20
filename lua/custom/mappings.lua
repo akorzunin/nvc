@@ -204,4 +204,12 @@ M.lsp = {
   },
 }
 
+M.auto_actions = {
+  n = {
+    -- <leader>af defined in other place
+    ["<leader>afe"] = { "<cmd> FormatEnable <CR>", "enable auto formatting" },
+    ["<leader>afd"] = { "<cmd> FormatDisable <CR>", "disable auto formatting" },
+    ["<leader>as"] = { "<cmd> ASToggle <CR>", "toggle auto save" },
+  },
+}
 return M

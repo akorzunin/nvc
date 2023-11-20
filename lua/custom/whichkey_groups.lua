@@ -9,6 +9,7 @@ wk.register {
     f = { name = "telescope actions" },
     s = { name = "set syntax" },
     t = { name = "toggle" },
+    a = { name = "auto actions" },
   },
   ["<leader>j"] = {
     f = { name = "lsp telescope" },
