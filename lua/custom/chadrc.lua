@@ -31,4 +31,9 @@ M.ui = {
 M.mappings = require "custom.mappings"
 M.plugins = "custom.plugins"
 
+local O = require "plugins.configs.others"
+O.blankline.show_current_context_start = false
+local T = require "plugins.configs.treesitter"
+T.indent = { enable = false }
+
 return M

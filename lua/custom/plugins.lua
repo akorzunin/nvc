@@ -343,5 +343,10 @@ local plugins = {
     event = "VeryLazy",
     opts = {},
   },
+  {
+    "nmac427/guess-indent.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
 return plugins
