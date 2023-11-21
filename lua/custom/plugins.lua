@@ -378,6 +378,7 @@ local plugins = {
       formatters_by_ft = {
         lua = { "stylua" },
         python = { "black" },
+        go = { "golines" },
         javascript = { "prettier" },
         javascriptreact = { "prettier" },
         typescript = { "prettier" },
