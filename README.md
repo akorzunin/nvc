@@ -15,8 +15,8 @@ https://gist.github.com/akorzunin/4dfad794fc658502e5c62379191eb4f0
 
 ## Hotkeys
 
-`<leader>fk` to see keymaps
-`<leader>fc` to see commands
+- `<leader>fk` to see keymaps
+- `<leader>fc` to see commands
 
 ## Fonts
 
@@ -28,7 +28,7 @@ https://gist.github.com/akorzunin/4dfad794fc658502e5c62379191eb4f0
 let @* = execute('messages')
 ```
 
-### substitute in selection
+### Substitute in selection
 
 - go to visual and select some text
 - run `:s/<string to remove>/<string to put>`
