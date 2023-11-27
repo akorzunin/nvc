@@ -419,5 +419,6 @@ local plugins = {
     event = "VeryLazy",
     opts = {},
   },
+  { "tpope/vim-surround", event = "VeryLazy", init = function() end },
 }
 return plugins
