@@ -217,6 +217,9 @@ local plugins = {
           enable = true,
           update_root = true,
         },
+        git = {
+          ignore = false,
+        },
       }
     end,
   },
