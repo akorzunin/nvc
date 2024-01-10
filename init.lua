@@ -83,3 +83,7 @@ end, {
 -- end, {
 --   desc = "Re-enable autoformat-on-save",
 -- })
+
+require("mini.cursorword").setup { delay = 500 }
+-- INFO: fixes scrolling w/ j/k but breaks scrolling w/ mouse whell
+-- require("mini.animate").setup()

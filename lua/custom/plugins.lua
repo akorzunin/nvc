@@ -423,5 +423,6 @@ local plugins = {
     opts = {},
   },
   { "tpope/vim-surround", event = "VeryLazy", init = function() end },
+  { "echasnovski/mini.nvim", version = false },
 }
 return plugins
