@@ -424,5 +424,16 @@ local plugins = {
   },
   { "tpope/vim-surround", event = "VeryLazy", init = function() end },
   { "echasnovski/mini.nvim", version = false },
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "rcarriga/nvim-notify",
+    },
+  },
 }
 return plugins
