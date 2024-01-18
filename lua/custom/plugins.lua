@@ -420,7 +420,11 @@ local plugins = {
   {
     "okuuva/auto-save.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      execution_message = {
+        enabled = false,
+      },
+    },
   },
   { "tpope/vim-surround", event = "VeryLazy", init = function() end },
   { "echasnovski/mini.nvim", version = false },
