@@ -88,5 +88,6 @@ end, {
 -- })
 
 require("mini.cursorword").setup { delay = 500 }
+require("mini.trailspace").setup()
 -- INFO: fixes scrolling w/ j/k but breaks scrolling w/ mouse whell
 -- require("mini.animate").setup()
