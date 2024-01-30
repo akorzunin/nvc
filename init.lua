@@ -59,6 +59,9 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 
+-- autoformatting is disabled by default
+vim.g.disable_autoformat = true
+
 vim.api.nvim_create_user_command("FormatDisable", function(args)
   if args.bang then
     -- FormatDisable! will disable formatting just for this buffer
