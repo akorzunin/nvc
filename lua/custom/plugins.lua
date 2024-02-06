@@ -39,15 +39,15 @@ local plugins = {
   {
     "theHamsta/nvim-dap-virtual-text",
     otps = {
-      enabled = true, -- enable this plugin (the default)
-      enabled_commands = true, -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
+      enabled = true,                     -- enable this plugin (the default)
+      enabled_commands = true,            -- create commands DapVirtualTextEnable, DapVirtualTextDisable, DapVirtualTextToggle, (DapVirtualTextForceRefresh for refreshing when debug adapter did not notify its termination)
       highlight_changed_variables = true, -- highlight changed values with NvimDapVirtualTextChanged, else always NvimDapVirtualText
-      highlight_new_as_changed = false, -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
-      show_stop_reason = true, -- show stop reason when stopped for exceptions
-      commented = false, -- prefix virtual text with comment string
-      only_first_definition = true, -- only show virtual text at first definition (if there are multiple)
-      all_references = false, -- show virtual text on all all references of the variable (not only definitions)
-      clear_on_continue = false, -- clear virtual text on "continue" (might cause flickering when stepping)
+      highlight_new_as_changed = false,   -- highlight new variables in the same way as changed variables (if highlight_changed_variables)
+      show_stop_reason = true,            -- show stop reason when stopped for exceptions
+      commented = false,                  -- prefix virtual text with comment string
+      only_first_definition = true,       -- only show virtual text at first definition (if there are multiple)
+      all_references = false,             -- show virtual text on all all references of the variable (not only definitions)
+      clear_on_continue = false,          -- clear virtual text on "continue" (might cause flickering when stepping)
       --- A callback that determines how a variable is displayed or whether it should be omitted
       --- @param variable Variable https://microsoft.github.io/debug-adapter-protocol/specification#Types_Variable
       --- @param buf number
@@ -65,8 +65,8 @@ local plugins = {
       -- position of virtual text, see `:h nvim_buf_set_extmark()`, default tries to inline the virtual text. Use 'eol' to set to end of line
       virt_text_pos = vim.fn.has "nvim-0.10" == 1 and "inline" or "eol",
       -- experimental features:
-      all_frames = false, -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
-      virt_lines = false, -- show virtual lines instead of virtual text (will flicker!)
+      all_frames = false,      -- show virtual text for all stack frames not only current. Only works for debugpy on my machine.
+      virt_lines = false,      -- show virtual lines instead of virtual text (will flicker!)
       virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
       -- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
     },
@@ -85,7 +85,7 @@ local plugins = {
     config = function(_, opts)
       require("core.utils").load_mappings "dap_python"
       local path =
-        "C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+      "C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
       local dap = require "dap"
       dap.configurations.python = {
         {
@@ -303,17 +303,17 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
     opts = {
-      enable = true, -- Enable this plugin (Can be enabled/disabled later via commands)
-      max_lines = 0, -- How many lines the window should span. Values <= 0 mean no limit.
-      min_window_height = 0, -- Minimum editor window height to enable context. Values <= 0 mean no limit.
+      enable = true,            -- Enable this plugin (Can be enabled/disabled later via commands)
+      max_lines = 0,            -- How many lines the window should span. Values <= 0 mean no limit.
+      min_window_height = 0,    -- Minimum editor window height to enable context. Values <= 0 mean no limit.
       line_numbers = true,
       multiline_threshold = 20, -- Maximum number of lines to show for a single context
-      trim_scope = "outer", -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
-      mode = "cursor", -- Line used to calculate context. Choices: 'cursor', 'topline'
+      trim_scope = "outer",     -- Which context lines to discard if `max_lines` is exceeded. Choices: 'inner', 'outer'
+      mode = "cursor",          -- Line used to calculate context. Choices: 'cursor', 'topline'
       -- Separator between context and content. Should be a single character string, like '-'.
       -- When separator is set, the context will only show up when there are at least 2 lines above cursorline.
       separator = nil,
-      zindex = 20, -- The Z-index of the context window
+      zindex = 20,     -- The Z-index of the context window
       on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
     },
   },
@@ -426,13 +426,37 @@ local plugins = {
       },
     },
   },
-  { "tpope/vim-surround", event = "VeryLazy", init = function() end },
+  { "tpope/vim-surround",    event = "VeryLazy", init = function() end },
   { "echasnovski/mini.nvim", version = false },
   {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
       -- add any options here
+    },
+    config = {
+      messages = {
+        enabled = false,
+      },
+      notify = {
+        enabled = false,
+      },
+      lsp = {
+        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+        },
+      },
+      -- you can enable a preset for easier configuration
+      presets = {
+        bottom_search = true,         -- use a classic bottom cmdline for search
+        command_palette = true,       -- position the cmdline and popupmenu together
+        long_message_to_split = true, -- long messages will be sent to a split
+        inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+        lsp_doc_border = false,       -- add a border to hover docs and signature help
+      },
     },
     dependencies = {
       "MunifTanjim/nui.nvim",
