@@ -14,7 +14,9 @@ M.general = {
     ["<A-F>"] = { "<cmd> lua vim.lsp.buf.format() <CR>", "Format buffer" },
     -- code nvigation
     ["<A-up>"] = { "<Plug>MoveLineUp", "Move line up" },
-    ["<A-down>"] = { "<Plug>MoveLineDown", "Move line up" },
+    ["<A-down>"] = { "<Plug>MoveLineDown", "Move line down" },
+    ["<leader>mk"] = { "<Plug>MoveLineUp", "Move line up" },
+    ["<leader>mj"] = { "<Plug>MoveLineUp", "Move line down" },
     -- debugger
     ["<F5>"] = { "<cmd> lua require'dap'.continue() <CR>", "Start debugger" },
     ["<F9>"] = {
@@ -59,12 +61,16 @@ M.general = {
       end,
       "Go to declaration",
     },
+    ["<leader>tf"] = { "<cmd> NvimTreeFocus <CR>", "[T]ree [F]ocus" },
   },
   v = {
     ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
     -- code nvigation
     ["<A-down>"] = { "<Plug>MoveBlockDown", "Move selection down" },
     ["<A-up>"] = { "<Plug>MoveBlockUp", "Move selection up" },
+    ["<leader>mj"] = { "<Plug>MoveBlockDown", "Move selection down" },
+    ["<leader>mk"] = { "<Plug>MoveBlockUp", "Move selection up" },
+
   },
   i = {
     ["<A-down>"] = { "<C-c> <Plug>MoveLineDown", "Move selection down" },
