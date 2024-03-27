@@ -93,3 +93,13 @@ require("mini.cursorword").setup { delay = 500 }
 require("mini.trailspace").setup()
 -- INFO: fixes scrolling w/ j/k but breaks scrolling w/ mouse whell
 -- require("mini.animate").setup()
+
+vim.api.nvim_create_user_command("DiagnosticToggle", function()
+  local config = vim.diagnostic.config
+	local vt = config().virtual_text
+	config {
+		virtual_text = not vt,
+		underline = not vt,
+		signs = not vt,
+	}
+end, { desc = "toggle diagnostic" })
