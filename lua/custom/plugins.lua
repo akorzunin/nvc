@@ -432,9 +432,6 @@ local plugins = {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
-      -- add any options here
-    },
-    config = {
       messages = {
         enabled = false,
       },
