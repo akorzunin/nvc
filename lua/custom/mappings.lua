@@ -62,6 +62,9 @@ M.general = {
       "Go to declaration",
     },
     ["<leader>tf"] = { "<cmd> NvimTreeFocus <CR>", "[T]ree [F]ocus" },
+    -- buffers
+    ["<leader>bca"] = { "<cmd> %bd|e# <CR>", "CLose All buffers except current" },
+
   },
   v = {
     ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
