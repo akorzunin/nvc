@@ -13,10 +13,10 @@ M.general = {
     -- formatting
     ["<A-F>"] = { "<cmd> lua vim.lsp.buf.format() <CR>", "Format buffer" },
     -- code nvigation
-    ["<A-up>"] = { "<Plug>MoveLineUp", "Move line up" },
     ["<A-down>"] = { "<Plug>MoveLineDown", "Move line down" },
+    ["<A-up>"] = { "<Plug>MoveLineUp", "Move line up" },
+    ["<leader>mj"] = { "<Plug>MoveLineDown", "Move line down" },
     ["<leader>mk"] = { "<Plug>MoveLineUp", "Move line up" },
-    ["<leader>mj"] = { "<Plug>MoveLineUp", "Move line down" },
     -- debugger
     ["<F5>"] = { "<cmd> lua require'dap'.continue() <CR>", "Start debugger" },
     ["<F9>"] = {
