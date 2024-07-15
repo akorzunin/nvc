@@ -63,8 +63,10 @@ M.general = {
     },
     ["<leader>tf"] = { "<cmd> NvimTreeFocus <CR>", "[T]ree [F]ocus" },
     -- buffers
-    ["<leader>bca"] = { "<cmd> %bd|e# <CR>", "CLose All buffers except current" },
-
+    ["<leader>bca"] = {
+      "<cmd> %bd|e# <CR>",
+      "CLose All buffers except current",
+    },
   },
   v = {
     ["<leader>wc"] = { '"+y', "Copy to Windows clipboard" },
@@ -73,7 +75,6 @@ M.general = {
     ["<A-up>"] = { "<Plug>MoveBlockUp", "Move selection up" },
     ["<leader>mj"] = { "<Plug>MoveBlockDown", "Move selection down" },
     ["<leader>mk"] = { "<Plug>MoveBlockUp", "Move selection up" },
-
   },
   i = {
     ["<A-down>"] = { "<C-c> <Plug>MoveLineDown", "Move selection down" },

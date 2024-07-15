@@ -15,7 +15,14 @@ local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
-  vim.fn.system { "git", "clone", "--filter=blob:none", repo, "--branch=stable", lazypath }
+  vim.fn.system {
+    "git",
+    "clone",
+    "--filter=blob:none",
+    repo,
+    "--branch=stable",
+    lazypath,
+  }
 end
 
 vim.opt.rtp:prepend(lazypath)
@@ -78,18 +85,18 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 vim.opt.list = true
-vim.opt.listchars:append({ tab = '» ', trail = '·', nbsp = '␣' })
-vim.opt.listchars:append({ eol = '↵' })
+vim.opt.listchars:append { tab = "» ", trail = "·", nbsp = "␣" }
+vim.opt.listchars:append { eol = "↵" }
 -- autoformatting is disabled by default
 vim.g.disable_autoformat = true
-    vim.api.nvim_create_user_command("FormatDisable", function(args)
-      if args.bang then
-        -- FormatDisable! will disable formatting just for this buffer
-        vim.b.disable_autoformat = true
-      else
-        vim.g.disable_autoformat = true
-      end
-    end, {
+vim.api.nvim_create_user_command("FormatDisable", function(args)
+  if args.bang then
+    -- FormatDisable! will disable formatting just for this buffer
+    vim.b.disable_autoformat = true
+  else
+    vim.g.disable_autoformat = true
+  end
+end, {
   desc = "Disable autoformat-on-save",
   bang = true,
 })
@@ -114,17 +121,17 @@ require("mini.trailspace").setup()
 
 vim.api.nvim_create_user_command("DiagnosticToggle", function()
   local config = vim.diagnostic.config
-	local vt = config().virtual_text
-	config {
-		virtual_text = not vt,
-		underline = not vt,
-		signs = not vt,
-	}
+  local vt = config().virtual_text
+  config {
+    virtual_text = not vt,
+    underline = not vt,
+    signs = not vt,
+  }
 end, { desc = "toggle diagnostic" })
 
-vim.filetype.add({
+vim.filetype.add {
   pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
-})
+}
 local enable_providers = {
   "python3_provider",
   -- "node_provider",
