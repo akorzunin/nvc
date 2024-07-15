@@ -32,4 +32,3 @@ let @* = execute('messages')
 
 - go to visual and select some text
 - run `:s/<string to remove>/<string to put>`
-
