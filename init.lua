@@ -73,7 +73,7 @@ require "configs.whichkey_groups"
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    local arg = vim.api.nvim_exec("arg", true)
+    local arg = vim.api.nvim_exec2("arg", { output = true })
     if arg == nil or arg == "" then
       vim.defer_fn(function()
         -- temporary solution, need to explisitly wait for Lazy -> Telescope -> project.nvim

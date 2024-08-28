@@ -4,7 +4,7 @@ local d = function(desc)
   return { desc = desc }
 end
 
--- n
+-- NOTE: NORMAL MODE
 map("n", "<A-down>", "<Plug>MoveLineDown", d "Move line down")
 map("n", "<A-up>", "<Plug>MoveLineUp", d "Move line up")
 
@@ -67,13 +67,13 @@ map(
   d "Close All buffers except current"
 )
 
--- v
+-- NOTE: VISUAL MODE
 map("v", "<A-down>", "<Plug>MoveBlockDown", d "Move selection down")
 map("v", "<A-up>", "<Plug>MoveBlockUp", d "Move selection up")
 map("v", "<leader>mj", "<Plug>MoveBlockDown", d "Move selection down")
 map("v", "<leader>mk", "<Plug>MoveBlockUp", d "Move selection up")
 
--- i
+-- NOTE: INSERT MODE
 map("i", "<A-down>", "<C-c> <Plug>MoveLineDown", d "Move selection down")
 map("i", "<A-up>", "<C-c> <Plug>MoveLineUp", d "Move selection up")
 map("i", "<C-s>", "<C-c> <cmd> w <CR>", d "Save in insert mode")
