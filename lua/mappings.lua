@@ -66,6 +66,7 @@ map(
   "<cmd> %bd|e# <CR>",
   d "Close All buffers except current"
 )
+map("n", "<leader>o", "<cmd> Oli <CR>", d "Open oil file browser")
 
 -- NOTE: VISUAL MODE
 map("v", "<A-down>", "<Plug>MoveBlockDown", d "Move selection down")
@@ -73,7 +74,7 @@ map("v", "<A-up>", "<Plug>MoveBlockUp", d "Move selection up")
 map("v", "<leader>mj", "<Plug>MoveBlockDown", d "Move selection down")
 map("v", "<leader>mk", "<Plug>MoveBlockUp", d "Move selection up")
 
--- NOTE: INSERT MODE
+-- NOTE: VISUAL MODE
 map("i", "<A-down>", "<C-c> <Plug>MoveLineDown", d "Move selection down")
 map("i", "<A-up>", "<C-c> <Plug>MoveLineUp", d "Move selection up")
 map("i", "<C-s>", "<C-c> <cmd> w <CR>", d "Save in insert mode")
@@ -104,11 +105,15 @@ map(
   "<cmd> Telescope registers <CR>",
   d "View paste register"
 )
+map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", d "Live grep")
+map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", d "Find files")
+map("n", "<leader>fo", "<cmd> Telescope find_files <CR>", d "Old files")
+map("n", "<leader>fp", "<cmd> Telescope projects <CR>", d "Find projects")
 map(
   "n",
-  "<leader>fff",
+  "<leader>fi",
   "<cmd> Telescope builtin previewer=false <CR>",
-  d "View telescope builtins"
+  d "View telescope built[i]ns"
 )
 
 -- OLD MAPPINGS
