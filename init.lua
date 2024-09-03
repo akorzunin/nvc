@@ -144,3 +144,7 @@ end
 
 vim.opt.number = true
 vim.opt.relativenumber = true
+
+local intial_theme = "rose-pine"
+-- local intial_theme = "tokyonight"
+vim.cmd("colorscheme " .. intial_theme)

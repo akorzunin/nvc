@@ -2,7 +2,7 @@ local M = {}
 
 M.ui = {
   theme = "rosepine",
-  theme_toggle = { "rosepine", "catppuccin" },
+  theme_toggle = { "rosepine", "onedark" },
   tabufline = {},
   statusline = {
     modules = {

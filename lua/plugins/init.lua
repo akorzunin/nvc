@@ -111,9 +111,6 @@ local plugins = {
     },
   },
   {
-    "rose-pine/neovim",
-  },
-  {
     "VonHeikemen/lsp-zero.nvim",
     branch = "v2.x",
     event = "VeryLazy",
@@ -419,4 +416,5 @@ local plugins = {
     end,
   },
 }
+table.insert(plugins, require "plugins.themes")
 return plugins
