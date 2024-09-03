@@ -1,19 +1,18 @@
 DEBUG = false
 -- DEBUG = true
+
 require "globals"
+
 if IS_WINDOWS then
-  vim.api.nvim_exec("language en_US", true)
+  vim.api.nvim_exec2("language en_US", {})
 end
--- local default_config = require "core.default_config"
--- default_config.lazy_nvim.change_detection = { enabled = false }
 
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
-vim.g.mapleader = " "
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
 
-if not vim.loop.fs_stat(lazypath) then
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
   local repo = "https://github.com/folke/lazy.nvim.git"
   vim.fn.system {
     "git",
@@ -73,20 +72,24 @@ require "configs.whichkey_groups"
 
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
-    local arg = vim.api.nvim_exec2("arg", { output = true })
+    local call_delay = 50
+    local last_arg = vim.v.argv[#vim.v.argv]
+    local arg = vim.api.nvim_exec2("arg", { output = true }).output
+    P(arg)
+    Aboba = arg
     if arg == nil or arg == "" then
       vim.defer_fn(function()
-        -- temporary solution, need to explisitly wait for Lazy -> Telescope -> project.nvim
-        -- to load
         vim.cmd "Telescope projects"
-      end, 50)
+      end, call_delay)
+    elseif last_arg == "." then
+      vim.defer_fn(function()
+        vim.cmd "NvimTreeClose"
+        vim.cmd "Oil"
+      end, call_delay)
     end
   end,
 })
 
-vim.opt.list = true
-vim.opt.listchars:append { tab = "» ", trail = "·", nbsp = "␣" }
-vim.opt.listchars:append { eol = "↵" }
 -- autoformatting is disabled by default
 vim.g.disable_autoformat = true
 vim.api.nvim_create_user_command("FormatDisable", function(args)
@@ -107,6 +110,7 @@ end, {
   desc = "Re-enable autoformat-on-save",
 })
 -- TODO: make toggle command for formatting and move command to another file
+--
 -- vim.api.nvim_create_user_command("FormatToggle", function()
 --   vim.b.disable_autoformat = not vim.b.disable_autoformat
 --   vim.g.disable_autoformat = not vim.b.disable_autoformat
@@ -141,10 +145,3 @@ for _, plugin in pairs(enable_providers) do
   vim.g["loaded_" .. plugin] = nil
   vim.cmd("runtime " .. plugin)
 end
-
-vim.opt.number = true
-vim.opt.relativenumber = true
-
-local intial_theme = "rose-pine"
--- local intial_theme = "tokyonight"
-vim.cmd("colorscheme " .. intial_theme)
