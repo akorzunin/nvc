@@ -1,16 +1,5 @@
 local plugins = {
   {
-    "nvim-tree/nvim-tree.lua",
-    version = "*",
-    lazy = false,
-    dependencies = {
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("nvim-tree").setup {}
-    end,
-  },
-  {
     "tpope/vim-fugitive",
     event = "VeryLazy",
   },
@@ -186,16 +175,7 @@ local plugins = {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
-    config = function()
-      local tdc = require "todo-comments"
-      tdc.opts = {}
-      tdc.setup()
-    end,
+    opts = {},
   },
   {
     "equalsraf/neovim-gui-shim",
@@ -252,7 +232,6 @@ local plugins = {
     event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      -- "NvChad/nvterm",
     },
   },
   {

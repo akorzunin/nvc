@@ -8,14 +8,24 @@ M.ui = {
     modules = {
       cursor = function()
         local left_sep = "%#St_pos_sep#" .. "" .. "%#St_pos_icon#" .. " "
-        local current_line = vim.fn.line(".", vim.g.statusline_winid)
-        local total_line = vim.fn.line("$", vim.g.statusline_winid)
-        local r, c = unpack(vim.api.nvim_win_get_cursor(0))
-        local text = r .. ":" .. c + 1
-        text = (current_line == 1 and "Top") or text
-        text = (current_line == total_line and "Bot") or text
+        local row, col = unpack(vim.fn.getcursorcharpos(), 2, 3)
+        local row_v = unpack(vim.fn.getpos "v", 2)
+        local mode = vim.api.nvim_get_mode().mode
+        local text = row .. ":" .. col
+        if mode == "v" then
+          local diff = math.abs(row - row_v) + 1
+          text = row_v .. "-" .. row .. "(" .. diff .. ")"
+        end
         return left_sep .. "%#St_pos_text#" .. " " .. text .. " "
       end,
+    },
+  },
+  changed_themes = {
+    rosepine = {
+      base_30 = {
+        grey_fg = "#908caa",
+      },
+      base_16 = {},
     },
   },
 }

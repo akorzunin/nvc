@@ -115,9 +115,10 @@ map(
   "<cmd> Telescope builtin previewer=false <CR>",
   d "View telescope built[i]ns"
 )
+-- Exit nvim
+map("n", "<leader>q", "<cmd> wqa <CR>")
 
 -- OLD MAPPINGS
-local M = {}
 
 -- fugitive
 map("n", "<leader>gs", "<cmd> Git <CR>")
@@ -131,9 +132,6 @@ map("n", "<leader>u", "<cmd> UndotreeToggle <CR>", d "Toggle undotree")
 map("n", "<leader>ht", function()
   require("nvterm.terminal").new "horizontal"
 end, d "New horizontal term")
-
--- dap
-map("n", "<leader>q", "<cmd> DapToggleBreakpoint <CR>")
 
 -- dap_python
 map("n", "<leader>dpr", function()
@@ -179,8 +177,6 @@ map(
   "<cmd> lua vim.lsp.buf.implementation() <CR>",
   d "jump to implementation"
 )
-
---  Telescope commands for LSP
 map(
   "n",
   "<leader>jff",
