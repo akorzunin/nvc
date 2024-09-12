@@ -60,7 +60,6 @@ local plugins = {
       -- require("core.utils").load_mappings("dap_python")
     end,
   },
-  --
   {
     "williamboman/mason.nvim",
     opts = {
@@ -139,39 +138,6 @@ local plugins = {
     end,
   },
   {
-    "akorzunin/project.nvim",
-    dir = (function()
-      if DEBUG and IS_WINDOWS then
-        return "C:\\Users\\akorz\\Documents\\project.nvim"
-      elseif DEBUG and not IS_WINDOWS then
-        return "~/Documents/project.nvim"
-      end
-      return nil
-    end)(),
-    event = "VeryLazy",
-    config = function()
-      require("project_nvim").setup {
-        show_files = "filtered_builtin",
-        list = {
-          "oldfiles",
-          "find_files",
-          "live_grep",
-        },
-      }
-      require("nvim-tree").setup {
-        sync_root_with_cwd = true,
-        respect_buf_cwd = true,
-        update_focused_file = {
-          enable = true,
-          update_root = true,
-        },
-        git = {
-          ignore = false,
-        },
-      }
-    end,
-  },
-  {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -180,38 +146,6 @@ local plugins = {
   {
     "equalsraf/neovim-gui-shim",
     event = "VeryLazy",
-  },
-  {
-    "linux-cultist/venv-selector.nvim",
-    dependencies = {
-      "neovim/nvim-lspconfig",
-      "nvim-telescope/telescope.nvim",
-      -- for DAP support
-      "mfussenegger/nvim-dap-python",
-    },
-    config = true,
-    branch = "regexp",
-    keys = {
-      {
-        "<leader>vs",
-        "<cmd>:VenvSelect<cr>",
-        -- optional if you use a autocmd (see #🤖-Automate)
-        "<leader>vc",
-        "<cmd>:VenvSelectCached<cr>",
-      },
-    },
-    opts = {
-      auto_refresh = false,
-      search_venv_managers = true,
-      search_workspace = true,
-      search = true,
-      dap_enabled = false,
-      parents = 2,
-      name = "venv", -- NOTE: You can also use a lua table here for multiple names: {"venv", ".venv"}`
-      fd_binary_name = "fd",
-      notify_user_on_activate = true,
-    },
-    event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
   },
   {
     "folke/neodev.nvim",
@@ -262,63 +196,6 @@ local plugins = {
     },
   },
   {
-    "stevearc/conform.nvim",
-    event = { "BufWritePre" },
-    cmd = { "ConformInfo" },
-    keys = {
-      {
-        -- Customize or remove this keymap to your liking
-        "<leader>af",
-        function()
-          require("conform").format { async = true, lsp_fallback = true }
-        end,
-        mode = "",
-        desc = "Format buffer",
-      },
-    },
-    -- Everything in opts will be passed to setup()
-    opts = {
-      -- Define your formatters
-      formatters_by_ft = {
-        lua = { "stylua" },
-        python = { "black" },
-        go = { "golines" },
-        javascript = { "prettier" },
-        javascriptreact = { "prettier" },
-        typescript = { "prettier" },
-        typescriptreact = { "prettier" },
-      },
-      -- Set up format-on-save
-      format_on_save = function(bufnr)
-        -- Disable autoformat on certain filetypes
-        local ignore_filetypes = { "sql", "java" }
-        if vim.tbl_contains(ignore_filetypes, vim.bo[bufnr].filetype) then
-          return
-        end
-        -- Disable with a global or buffer-local variable
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-          return
-        end
-        -- Disable autoformat for files in a certain path
-        local bufname = vim.api.nvim_buf_get_name(bufnr)
-        if bufname:match "/node_modules/" then
-          return
-        end
-        return { timeout_ms = 1500, lsp_fallback = true }
-      end,
-      -- Customize formatters
-      formatters = {
-        shfmt = {
-          prepend_args = { "-i", "2" },
-        },
-      },
-    },
-    init = function()
-      -- If you want the formatexpr, here is the place to set it
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-    end,
-  },
-  {
     "okuuva/auto-save.nvim",
     event = "VeryLazy",
     opts = {
@@ -329,71 +206,7 @@ local plugins = {
   },
   { "tpope/vim-surround", event = "VeryLazy", init = function() end },
   { "echasnovski/mini.nvim", version = false },
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    opts = {
-      messages = {
-        enabled = false,
-      },
-      notify = {
-        enabled = false,
-      },
-      lsp = {
-        -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-        override = {
-          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-          ["vim.lsp.util.stylize_markdown"] = true,
-          ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-        },
-      },
-      -- you can enable a preset for easier configuration
-      presets = {
-        bottom_search = true, -- use a classic bottom cmdline for search
-        command_palette = true, -- position the cmdline and popupmenu together
-        long_message_to_split = true, -- long messages will be sent to a split
-        inc_rename = false, -- enables an input dialog for inc-rename.nvim
-        lsp_doc_border = false, -- add a border to hover docs and signature help
-      },
-    },
-    dependencies = {
-      "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
-    },
-  },
-  {
-    "stevearc/oil.nvim",
-    event = "VeryLazy",
-    keys = {
-      {
-        "<leader>o",
-        function()
-          require("oil").open()
-        end,
-        desc = "Open oil file browser",
-      },
-    },
-    opts = {
-      default_file_explorer = true,
-      view_options = {
-        show_hidden = true,
-      },
-    },
-    -- Optional dependencies
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-  },
-  {
-    "akorzunin/semshi",
-    build = ":UpdateRemotePlugins",
-    version = "*", -- Recommended to use the latest release
-    -- event = "VeryLazy",
-    init = function() -- example, skip if you're OK with the default config
-      vim.g["semshi#error_sign"] = false
-    end,
-    config = function()
-      -- any config or setup that would need to be done after plugin loading
-    end,
-  },
+  { "danth/pathfinder.vim", event = "VeryLazy" },
 }
-table.insert(plugins, require "plugins.themes")
+
 return plugins
