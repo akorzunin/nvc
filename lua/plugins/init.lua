@@ -206,7 +206,13 @@ local plugins = {
   },
   { "tpope/vim-surround", event = "VeryLazy", init = function() end },
   { "echasnovski/mini.nvim", version = false },
-  { "danth/pathfinder.vim", event = "VeryLazy" },
+  -- { "danth/pathfinder.vim", event = "VeryLazy" },
+  {
+    "mg979/vim-visual-multi",
+    -- config = function()
+    --   require("vim-visual-multi").setup()
+    -- end
+  },
 }
 
 return plugins

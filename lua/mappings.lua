@@ -4,15 +4,26 @@ local d = function(desc)
   return { desc = desc }
 end
 
--- NOTE: NORMAL MODE
+-- vim-move binds
+-- line
 map("n", "<A-down>", "<Plug>MoveLineDown", d "Move line down")
 map("n", "<A-up>", "<Plug>MoveLineUp", d "Move line up")
+map("n", "<C-A-j>", "<Plug>MoveLineDown", d "Move line down")
+map("n", "<C-A-k>", "<Plug>MoveLineUp", d "Move line up")
 
--- code nvigation
-map("n", "<A-down>", "<Plug>MoveLineDown", d "Move line down")
-map("n", "<A-up>", "<Plug>MoveLineUp", d "Move line up")
-map("n", "<leader>mj", "<Plug>MoveLineDown", d "Move line down")
-map("n", "<leader>mk", "<Plug>MoveLineUp", d "Move line up")
+map("i", "<A-down>", "<C-c> <Plug>MoveLineDown", d "Move selection down")
+map("i", "<A-up>", "<C-c> <Plug>MoveLineUp", d "Move selection up")
+map("i", "<C-A-j>", "<C-c> <Plug>MoveLineDown", d "Move line down")
+map("i", "<C-A-k>", "<C-c> <Plug>MoveLineUp", d "Move line up")
+
+-- block
+map("v", "<A-down>", "<Plug>MoveBlockDown", d "Move selection down")
+map("v", "<A-up>", "<Plug>MoveBlockUp", d "Move selection up")
+map("v", "<C-A-j>", "<Plug>MoveBlockDown", d "Move selection down")
+map("v", "<C-A-k>", "<Plug>MoveBlockUp", d "Move selection up")
+
+-- NOTE: NORMAL MODE
+
 -- debugger
 map("n", "<F5>", "<cmd> lua require'dap'.continue() <CR>", d "Start debugger")
 map(
@@ -69,14 +80,9 @@ map(
 map("n", "<leader>o", "<cmd> Oli <CR>", d "Open oil file browser")
 
 -- NOTE: VISUAL MODE
-map("v", "<A-down>", "<Plug>MoveBlockDown", d "Move selection down")
-map("v", "<A-up>", "<Plug>MoveBlockUp", d "Move selection up")
-map("v", "<leader>mj", "<Plug>MoveBlockDown", d "Move selection down")
-map("v", "<leader>mk", "<Plug>MoveBlockUp", d "Move selection up")
 
 -- NOTE: VISUAL MODE
-map("i", "<A-down>", "<C-c> <Plug>MoveLineDown", d "Move selection down")
-map("i", "<A-up>", "<C-c> <Plug>MoveLineUp", d "Move selection up")
+map({ "n", "i" }, "<C-d>", "<esc><right> <Plug>vm#commands#ctrln(1)<cr>")
 map("i", "<C-s>", "<C-c> <cmd> w <CR>", d "Save in insert mode")
 
 -- telescope
