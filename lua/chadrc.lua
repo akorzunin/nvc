@@ -1,6 +1,6 @@
 local M = {}
 
-M.ui = {
+M.base46 = {
   theme = "rosepine",
   theme_toggle = { "rosepine", "onedark" },
   tabufline = {},
