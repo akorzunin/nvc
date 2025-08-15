@@ -199,9 +199,9 @@ local plugins = {
     "okuuva/auto-save.nvim",
     event = "VeryLazy",
     opts = {
-      execution_message = {
-        enabled = false,
-      },
+      -- execution_message = {
+      --   enabled = false,
+      -- },
     },
   },
   { "tpope/vim-surround", event = "VeryLazy", init = function() end },
