@@ -1,5 +1,12 @@
 local plugins = {
   {
+    "supermaven-inc/supermaven-nvim",
+    event = "VeryLazy",
+    config = function()
+      require("supermaven-nvim").setup({})
+    end,
+  },
+  {
     "tpope/vim-fugitive",
     event = "VeryLazy",
   },
@@ -43,7 +50,7 @@ local plugins = {
     config = function(_, _)
       -- require("core.utils").load_mappings "dap_python"
       local path =
-        "C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+      "C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
       local dap = require "dap"
       dap.configurations.python = {
         {
@@ -204,7 +211,7 @@ local plugins = {
       -- },
     },
   },
-  { "tpope/vim-surround", event = "VeryLazy", init = function() end },
+  { "tpope/vim-surround",    event = "VeryLazy", init = function() end },
   { "echasnovski/mini.nvim", version = false },
   -- { "danth/pathfinder.vim", event = "VeryLazy" },
   {
