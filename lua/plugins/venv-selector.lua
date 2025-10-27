@@ -4,7 +4,7 @@ return {
     "neovim/nvim-lspconfig",
     "nvim-telescope/telescope.nvim",
     -- for DAP support
-    "mfussenegger/nvim-dap-python",
+    -- "mfussenegger/nvim-dap-python",
   },
   config = true,
   branch = "regexp",
@@ -28,5 +28,5 @@ return {
     fd_binary_name = "fd",
     notify_user_on_activate = true,
   },
-  event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+ -- event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 }

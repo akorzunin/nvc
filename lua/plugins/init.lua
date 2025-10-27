@@ -43,30 +43,30 @@ local plugins = {
     "leoluz/nvim-dap-go",
     ft = "go",
   },
-  {
-    "mfussenegger/nvim-dap-python",
-    ft = "python",
-    dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
-    config = function(_, _)
-      -- require("core.utils").load_mappings "dap_python"
-      local path =
-      "C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
-      local dap = require "dap"
-      dap.configurations.python = {
-        {
-          type = "python",
-          request = "launch",
-          name = "Launch file",
-          program = "${file}",
-          pythonPath = function()
-            return path
-          end,
-        },
-      }
-      require("dap-python").setup(path)
-      -- require("core.utils").load_mappings("dap_python")
-    end,
-  },
+  -- {
+  --   "mfussenegger/nvim-dap-python",
+  --   ft = "python",
+  --   dependencies = { "mfussenegger/nvim-dap", "rcarriga/nvim-dap-ui" },
+  --   config = function(_, _)
+  --     -- require("core.utils").load_mappings "dap_python"
+  --     local path =
+  --     "C:\\Users\\avkorz\\AppData\\Local\\Programs\\Python\\Python310\\python.exe"
+  --     local dap = require "dap"
+  --     dap.configurations.python = {
+  --       {
+  --         type = "python",
+  --         request = "launch",
+  --         name = "Launch file",
+  --         program = "${file}",
+  --         pythonPath = function()
+  --           return path
+  --         end,
+  --       },
+  --     }
+  --     require("dap-python").setup(path)
+  --     -- require("core.utils").load_mappings("dap_python")
+  --   end,
+  -- },
   {
     "williamboman/mason.nvim",
     opts = {
@@ -84,13 +84,13 @@ local plugins = {
       },
     },
   },
-  {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   config = function()
+  --     require "plugins.configs.lspconfig"
+  --     require "custom.configs.lspconfig"
+  --   end,
+  -- },
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -105,45 +105,39 @@ local plugins = {
       },
     },
   },
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    event = "VeryLazy",
-    config = function()
-      require("lsp-zero.settings").preset {}
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    cmd = "LspInfo",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "williamboman/mason-lspconfig.nvim" },
-      {
-        "williamboman/mason.nvim",
-        build = function()
-          pcall(vim.cmd, "MasonUpdate")
-        end,
-      },
-    },
-    config = function()
-      -- This is where all the LSP shenanigans will live
-
-      local lsp = require "lsp-zero"
-
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps {
-          buffer = bufnr,
-        }
-      end)
-
-      -- (Optional) Configure lua language server for neovim
-      require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
-
-      lsp.setup()
-    end,
-  },
+  -- {
+  --   "VonHeikemen/lsp-zero.nvim",
+  --   branch = "v2.x",
+  --   event = "VeryLazy",
+  --   config = function()
+  --     require("lsp-zero.settings").preset {}
+  --   end,
+  -- },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   cmd = "LspInfo",
+  --   event = { "BufReadPre", "BufNewFile" },
+  --   dependencies = {
+  --     { "hrsh7th/cmp-nvim-lsp" },
+  --     { "williamboman/mason-lspconfig.nvim" },
+  --     {
+  --       "williamboman/mason.nvim",
+  --       build = function()
+  --         pcall(vim.cmd, "MasonUpdate")
+  --       end,
+  --     },
+  --   },
+  --   config = function()
+  --     local lsp = require "lsp-zero"
+  --     lsp.on_attach(function(client, bufnr)
+  --       lsp.default_keymaps {
+  --         buffer = bufnr,
+  --       }
+  --     end)
+  --     vim.lsp.config.lua_ls.setup(lsp.nvim_lua_ls())
+  --     lsp.setup()
+  --   end,
+  -- },
   {
     "folke/todo-comments.nvim",
     event = "VeryLazy",
@@ -184,11 +178,11 @@ local plugins = {
     event = "VeryLazy",
     opts = {},
   },
-  {
-    "simrat39/symbols-outline.nvim",
-    event = "VeryLazy",
-    opts = {},
-  },
+  -- {
+  --   "simrat39/symbols-outline.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  -- },
   {
     "nmac427/guess-indent.nvim",
     event = "VeryLazy",

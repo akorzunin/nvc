@@ -1,5 +1,6 @@
 return {
   "stevearc/oil.nvim",
+  commit = "548587d68b55e632d8a69c92cefd981f360634fa",
   event = "VeryLazy",
   keys = {
     {

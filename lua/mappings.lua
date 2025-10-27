@@ -140,9 +140,9 @@ map("n", "<leader>ht", function()
 end, d "New horizontal term")
 
 -- dap_python
-map("n", "<leader>dpr", function()
-  require("dap-python").test_method()
-end)
+-- map("n", "<leader>dpr", function()
+--   require("dap-python").test_method()
+-- end)
 
 -- lazygit
 map("n", "<leader>gg", "<cmd> LazyGit <CR>")
