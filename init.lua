@@ -59,7 +59,6 @@ vim.fn.sign_define(
   "DapBreakpoint",
   { text = "•", texthl = "red", linehl = "", numhl = "" }
 )
-require("dap-go").setup {}
 
 local CMP = require "cmp"
 CMP.mapping["Down"] = CMP.mapping["<Tab>"]
@@ -69,26 +68,6 @@ require "snippets.lua_snippets"
 
 -- load wk groups
 require "configs.whichkey_groups"
-
-vim.api.nvim_create_autocmd("VimEnter", {
-  callback = function()
-    local call_delay = 50
-    local last_arg = vim.v.argv[#vim.v.argv]
-    local arg = vim.api.nvim_exec2("arg", { output = true }).output
-    P(arg)
-    Aboba = arg
-    if arg == nil or arg == "" then
-      vim.defer_fn(function()
-        vim.cmd "Telescope projects"
-      end, call_delay)
-    elseif last_arg == "." then
-      vim.defer_fn(function()
-        vim.cmd "NvimTreeClose"
-        vim.cmd "Oil"
-      end, call_delay)
-    end
-  end,
-})
 
 -- autoformatting is disabled by default
 vim.g.disable_autoformat = true
