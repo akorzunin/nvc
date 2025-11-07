@@ -1,4 +1,5 @@
 local plugins = {
+  { import = "nvchad.blink.lazyspec" },
   {
     "supermaven-inc/supermaven-nvim",
     event = "VeryLazy",
@@ -32,13 +33,6 @@ local plugins = {
     },
   },
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end,
-  },
-  {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
@@ -51,45 +45,6 @@ local plugins = {
         other = "",
       },
     },
-  },
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    event = "VeryLazy",
-    config = function()
-      require("lsp-zero.settings").preset {}
-    end,
-  },
-  {
-    "neovim/nvim-lspconfig",
-    cmd = "LspInfo",
-    event = { "BufReadPre", "BufNewFile" },
-    dependencies = {
-      { "hrsh7th/cmp-nvim-lsp" },
-      { "williamboman/mason-lspconfig.nvim" },
-      {
-        "williamboman/mason.nvim",
-        build = function()
-          pcall(vim.cmd, "MasonUpdate")
-        end,
-      },
-    },
-    config = function()
-      -- This is where all the LSP shenanigans will live
-
-      local lsp = require "lsp-zero"
-
-      lsp.on_attach(function(client, bufnr)
-        lsp.default_keymaps {
-          buffer = bufnr,
-        }
-      end)
-
-      -- (Optional) Configure lua language server for neovim
-      -- vim.lsp.config.lua_ls.setup(lsp.nvim_lua_ls())
-
-      lsp.setup()
-    end,
   },
   {
     "folke/todo-comments.nvim",
@@ -125,14 +80,6 @@ local plugins = {
     "nmac427/guess-indent.nvim",
     event = "VeryLazy",
     opts = {},
-  },
-  {
-    "shortcuts/no-neck-pain.nvim",
-    version = "*",
-    event = "VeryLazy",
-    opts = {
-      width = 130, -- matches exactly 121 col in buffer
-    },
   },
   {
     "okuuva/auto-save.nvim",

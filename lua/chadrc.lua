@@ -8,8 +8,8 @@ M.base46 = {
     modules = {
       cursor = function()
         local left_sep = "%#St_pos_sep#" .. "" .. "%#St_pos_icon#" .. " "
-        local row, col = unpack(vim.fn.getcursorcharpos(), 2, 3)
-        local row_v = unpack(vim.fn.getpos "v", 2)
+        local row, col = table.unpack(vim.fn.getcursorcharpos(), 2, 3)
+        local row_v = table.unpack(vim.fn.getpos "v", 2)
         local mode = vim.api.nvim_get_mode().mode
         local text = row .. ":" .. col
         if mode == "v" then
@@ -31,5 +31,8 @@ M.base46 = {
 }
 
 M.mappings = require "nvchad.mappings"
+
+require("nvconfig").base46.theme = "rosepine"
+require("base46").load_all_highlights()
 
 return M

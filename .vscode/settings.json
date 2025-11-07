@@ -1,5 +1,10 @@
 {
     "Lua.diagnostics.globals": [
         "vim"
-    ]
+    ],
+    "python.testing.pytestArgs": [
+        "test"
+    ],
+    "python.testing.unittestEnabled": false,
+    "python.testing.pytestEnabled": true
 }

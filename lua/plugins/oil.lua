@@ -1,6 +1,6 @@
 return {
   "stevearc/oil.nvim",
-  event = "VeryLazy",
+  lazy = false,
   keys = {
     {
       "<leader>o",
@@ -16,6 +16,5 @@ return {
       show_hidden = true,
     },
   },
-  -- Optional dependencies
   dependencies = { "nvim-tree/nvim-web-devicons" },
 }

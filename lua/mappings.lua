@@ -4,6 +4,9 @@ local d = function(desc)
   return { desc = desc }
 end
 
+-- comment line
+map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
 -- vim-move binds
 -- line
 map("n", "<A-down>", "<Plug>MoveLineDown", d "Move line down")
@@ -110,6 +113,12 @@ map(
   "<leader>fr",
   "<cmd> Telescope registers <CR>",
   d "View paste register"
+)
+map(
+  "n",
+  "<leader>fz",
+  "<cmd> Telescope current_buffer_fuzzy_find <CR>",
+  d "Search in current file"
 )
 map("n", "<leader>fw", "<cmd> Telescope live_grep <CR>", d "Live grep")
 map("n", "<leader>ff", "<cmd> Telescope find_files <CR>", d "Find files")
