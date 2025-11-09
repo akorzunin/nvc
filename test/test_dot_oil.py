@@ -17,21 +17,18 @@
 # /009   lazy-lock.json
 
 
-from contextlib import suppress
 import os
 import shutil
 import subprocess
 import time
 from pathlib import Path
 
+
 import pytest
+import pynvim  # type: ignore
 
 TEST_DIR = Path(__file__).parent
 
-# @pytest.fixture(scope="session")
-# def nvim() -> subprocess.Popen:
-
-import pynvim  # type: ignore
 
 SESSION_SOCK = "/tmp/nvim.sock"
 
@@ -42,6 +39,7 @@ def nvim():
     Start one headless Neovim for the whole test session and return
     a connected pynvim client.
     """
+
     # 1. make sure we start from a clean slate
     if os.path.exists(SESSION_SOCK):
         os.unlink(SESSION_SOCK)
