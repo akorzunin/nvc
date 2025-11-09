@@ -1,21 +1,27 @@
+local format = function()
+  require("conform").format { async = true, lsp_fallback = true }
+end
+
 return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
   keys = {
+    { "<leader>fm", format, mode = "", desc = "Format buffer" },
+    { "<leader>ft", format, mode = "", desc = "Format buffer" },
+    { "<F3>", format, mode = "", desc = "Format buffer" },
     {
-      -- Customize or remove this keymap to your liking
-      "<leader>ab",
-      function()
-        require("conform").format { async = true, lsp_fallback = true }
-      end,
-      mode = "",
-      desc = "Format buffer",
+      "<leader>afe",
+      "<cmd> FormatEnable <CR>",
+      desc = "enable auto formatting",
+    },
+    {
+      "<leader>afd",
+      "<cmd> FormatDisable <CR>",
+      desc = "disable auto formatting",
     },
   },
-  -- Everything in opts will be passed to setup()
   opts = {
-    -- Define your formatters
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "black" },
@@ -24,6 +30,11 @@ return {
       javascriptreact = { "prettier" },
       typescript = { "prettier" },
       typescriptreact = { "prettier" },
+      html = { "prettier" },
+      css = { "prettier" },
+      json = { "prettier" },
+      yaml = { "prettier" },
+      markdown = { "prettier" },
     },
     -- Set up format-on-save
     format_on_save = function(bufnr)
@@ -51,7 +62,27 @@ return {
     },
   },
   init = function()
-    -- If you want the formatexpr, here is the place to set it
+    -- autoformatting is disabled by default
+    vim.g.disable_autoformat = true
+    vim.api.nvim_create_user_command("FormatDisable", function(args)
+      if args.bang then
+        -- FormatDisable! will disable formatting just for this buffer
+        vim.b.disable_autoformat = true
+      else
+        vim.g.disable_autoformat = true
+      end
+      print "autoformatting is disabled"
+    end, {
+      desc = "Disable autoformat-on-save",
+      bang = true,
+    })
+    vim.api.nvim_create_user_command("FormatEnable", function()
+      vim.b.disable_autoformat = false
+      vim.g.disable_autoformat = false
+      print "autoformatting is enabled"
+    end, {
+      desc = "Re-enable autoformat-on-save",
+    })
     vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
   end,
 }

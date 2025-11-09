@@ -10,10 +10,9 @@ end
 vim.g.base46_cache = vim.fn.stdpath "data" .. "/nvchad/base46/"
 require "config.lazy"
 
-require "mappings"
 require "config.whichkey_groups"
-
-vim.g.disable_autoformat = true
+require "mappings"
+require "options"
 
 vim.filetype.add { pattern = { [".*/hypr/.*%.conf"] = "hyprlang" } }
 
@@ -23,4 +22,4 @@ require("base46").load_all_highlights()
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require("cmd.restore_curr_pos")
+require "cmd.restore_curr_pos"

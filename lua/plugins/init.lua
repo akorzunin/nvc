@@ -24,23 +24,6 @@ local plugins = {
     },
   },
   {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "lua-language-server",
-        "html-lsp",
-        "tailwindcss-language-server",
-        "black",
-        "debugpy",
-        "mypy",
-        "ruff",
-        "ruff-lsp",
-        "pyright",
-        "gopls",
-      },
-    },
-  },
-  {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     event = "VeryLazy",
@@ -101,9 +84,32 @@ local plugins = {
     "okuuva/auto-save.nvim",
     event = "VeryLazy",
     opts = {},
+    keys = {
+      { "<leader>as", "<cmd>ASToggle<CR>", desc = "Toggle auto-save" },
+    },
   },
-  { "tpope/vim-surround", event = "VeryLazy", init = function() end },
-  { "echasnovski/mini.nvim", version = false },
+  {
+    "nvim-mini/mini.nvim",
+    version = false, -- main branch
+    init = function()
+      require("mini.cursorword").setup { delay = 500 }
+      require("mini.trailspace").setup()
+      require("mini.ai").setup()
+      require("mini.surround").setup {
+        mappings = {
+          add = "<leader>sa", -- Add surrounding in Normal and Visual modes
+          delete = "<leader>sd", -- Delete surrounding
+          find = "<leader>sf", -- Find surrounding (to the right)
+          find_left = "<leader>sF", -- Find surrounding (to the left)
+          highlight = "<leader>sh", -- Highlight surrounding
+          replace = "<leader>sr", -- Replace surrounding
+
+          suffix_last = "l", -- Suffix to search with "prev" method
+          suffix_next = "n", -- Suffix to search with "next" method
+        },
+      }
+    end,
+  },
   {
     "mg979/vim-visual-multi",
   },
