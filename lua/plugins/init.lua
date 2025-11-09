@@ -10,10 +10,18 @@ local plugins = {
   {
     "tpope/vim-fugitive",
     event = "VeryLazy",
+    keys = {
+      { "<leader>gs", "<cmd>Git<cr>", desc = "Git Status" },
+      { "<leader>gf", "<cmd>Git fetch<cr>", desc = "Git Fetch" },
+      { "<leader>gp", "<cmd>Git pull<cr>", desc = "Git Pull" },
+    },
   },
   {
     "mbbill/undotree",
     event = "VeryLazy",
+    keys = {
+      { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "Toggle undotree" },
+    },
   },
   {
     "williamboman/mason.nvim",
@@ -66,6 +74,7 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
     },
+    keys = { { "<leader>gg", "<cmd>LazyGit<cr>", desc = "LazyGit" } },
   },
   {
     "matze/vim-move",
@@ -75,6 +84,13 @@ local plugins = {
     "nvim-treesitter/nvim-treesitter-context",
     event = "VeryLazy",
     opts = {},
+    keys = {
+      {
+        "<leader>ts",
+        "<cmd>TSContextToggle<cr>",
+        desc = "toggle sticky headers",
+      },
+    },
   },
   {
     "nmac427/guess-indent.nvim",

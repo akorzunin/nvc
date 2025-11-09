@@ -40,8 +40,6 @@ map("n", "<F11>", "<cmd> lua require'dap'.step_into() <CR>", d "Start debugger")
 map("n", "<F12>", "<cmd> lua require'dap'.step_out() <CR>", d "Start debugger")
 map("n", "<leader>wp", '"+gp', d "paste from Windows clipboard")
 map("n", "<leader>ww", "<cmd> set wrap! <CR>", d "toggle wrap")
-map("n", "<leader>wn", "<cmd> NoNeckPain <CR>", d "wrap with NoNeckPain")
-map("n", "<leader>ts", "<cmd> TSContextToggle <CR>", d "toggle sticky headers")
 -- lsp
 map("n", "<leader>ll", "<cmd> LspInfo <CR>", d "lsp info")
 map("n", "<leader>ls", "<cmd> LspStop <CR>", d "stop lsp")
@@ -80,9 +78,6 @@ map(
   "<cmd> %bd|e# <CR>",
   d "Close All buffers except current"
 )
-map("n", "<leader>o", "<cmd> Oli <CR>", d "Open oil file browser")
-
--- NOTE: VISUAL MODE
 
 -- NOTE: VISUAL MODE
 map({ "n", "i" }, "<C-d>", "<esc><right> <Plug>vm#commands#ctrln(1)<cr>")
@@ -135,14 +130,6 @@ map("n", "<leader>q", "<cmd> wqa <CR>")
 
 -- OLD MAPPINGS
 
--- fugitive
-map("n", "<leader>gs", "<cmd> Git <CR>")
-map("n", "<leader>gf", "<cmd> Git fetch <CR>")
-map("n", "<leader>gp", "<cmd> Git pull <CR>")
-
--- undotree
-map("n", "<leader>u", "<cmd> UndotreeToggle <CR>", d "Toggle undotree")
-
 -- nvterm
 map("n", "<leader>ht", function()
   require("nvterm.terminal").new "horizontal"
@@ -152,17 +139,6 @@ end, d "New horizontal term")
 map("n", "<leader>dpr", function()
   require("dap-python").test_method()
 end)
-
--- lazygit
-map("n", "<leader>gg", "<cmd> LazyGit <CR>")
-
--- M["presence.nvim",
-map(
-  "n",
-  "<leader>dd",
-  "<cmd> Lazy load presence.nvim <CR>",
-  d "enable discord presence"
-)
 
 -- "nvim-tree",
 map("n", "<leader>tt", "<cmd> NvimTreeToggle <CR>", d "toggle nvim-tree")
