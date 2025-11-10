@@ -1,11 +1,17 @@
 local plugins = {
-  { import = "nvchad.blink.lazyspec" },
   {
     "supermaven-inc/supermaven-nvim",
     event = "VeryLazy",
-    config = function()
-      require("supermaven-nvim").setup {}
-    end,
+    opts = {
+      keymaps = {
+        accept_suggestion = "<C-k>",
+        accept_word = "<C-j>",
+        clear_suggestion = "<C-l>",
+      },
+    },
+    keys = {
+      { "<leader>st", "<cmd>SupermavenToggle<cr>", desc = "Toggle supermaven" },
+    },
   },
   {
     "tpope/vim-fugitive",

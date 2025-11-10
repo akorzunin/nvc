@@ -14,11 +14,18 @@ return {
         ["vim.lsp.util.stylize_markdown"] = true,
         ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
       },
+      signature = {
+        enabled = false,
+      },
+      message = {
+        enabled = false,
+      },
     },
     presets = {
       bottom_search = true,
       command_palette = true,
       long_message_to_split = true,
+      lsp_doc_border = true,
     },
   },
   dependencies = {

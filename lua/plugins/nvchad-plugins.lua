@@ -1,4 +1,5 @@
 return {
+  { import = "nvchad.blink.lazyspec" },
   {
     "nvchad/ui",
     config = function()
