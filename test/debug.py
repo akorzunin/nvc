@@ -2,4 +2,13 @@ import subprocess
 
 
 if __name__ == "__main__":
-    subprocess.run(["nvim-qt"])
+    subprocess.run(
+        [
+            "kitty",
+            "-T",
+            "float",
+            "-e",
+            "nvim",
+            "init.lua",
+        ],
+    )

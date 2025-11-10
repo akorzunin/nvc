@@ -100,3 +100,17 @@ def test_dot_oil(nvim: pynvim.Nvim):
     assert lines[11] == "/009   lazy-lock.json\n"
 
     os.remove("/tmp/test.txt")
+
+
+def test_commands():
+    subprocess.run(
+        [
+            "kitty",
+            "-T",
+            "float",
+            "-e",
+            "nvim",
+            "test/",
+        ]
+    )
+    ...
