@@ -1,0 +1,9 @@
+# Ctrl + n to go multi cursor mode
+pepe
+aboba 123
+aboba 321
+aboba 432
+
+pog_abo 123
+pog_abob 321
+pog_aboba 432

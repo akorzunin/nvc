@@ -1,3 +1,7 @@
+local map = vim.keymap.set
+local d = function(desc)
+  return { desc = desc }
+end
 local plugins = {
   {
     "supermaven-inc/supermaven-nvim",
@@ -68,6 +72,23 @@ local plugins = {
   {
     "matze/vim-move",
     event = "VeryLazy",
+    keys = {
+      { "<leader>vm", "<cmd>m+1<cr>", desc = "Move line down" },
+      { "<leader>vM", "<cmd>m-2<cr>", desc = "Move line up" },
+    },
+    init = function()
+      -- line
+      map("n", "<A-down>", "<Plug>MoveLineDown", d "Move line down")
+      map("n", "<A-up>", "<Plug>MoveLineUp", d "Move line up")
+      map("n", "<C-A-j>", "<Plug>MoveLineDown", d "Move line down")
+      map("n", "<C-A-k>", "<Plug>MoveLineUp", d "Move line up")
+
+      -- block
+      map("v", "<A-down>", "<Plug>MoveBlockDown", d "Move selection down")
+      map("v", "<A-up>", "<Plug>MoveBlockUp", d "Move selection up")
+      map("v", "<C-A-j>", "<Plug>MoveBlockDown", d "Move selection down")
+      map("v", "<C-A-k>", "<Plug>MoveBlockUp", d "Move selection up")
+    end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
@@ -118,6 +139,38 @@ local plugins = {
   },
   {
     "mg979/vim-visual-multi",
+    event = "VeryLazy",
+    init = function()
+      vim.g.VM_maps = {
+        ["Find Under"] = "<C-n>",
+        ["Find Subword Underv"] = "<C-n>",
+        ["Add Cursor Down"] = "<C-Down>",
+        ["Add Cursor Up"] = "<C-Up>",
+        ["Add Cursor At Pos"] = "<C-.>",
+      }
+      vim.g.VM_show_warnings = 0
+      vim.g.VM_mouse_mappings = 1
+      vim.g.VM_auto_select = 1
+      vim.g.VM_auto_selection = 1
+      vim.g.VM_max_count = 10
+      vim.g.VM_max_jumps = 10
+      vim.g.VM_excluded_filetypes = { "TelescopePrompt", "vimwiki" }
+    end,
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    opts = {},
+    keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
+    },
   },
 }
 

@@ -8,25 +8,6 @@ map("i", "<C-V>", "<Nop>", { noremap = true })
 -- comment line
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
--- vim-move binds
--- line
-map("n", "<A-down>", "<Plug>MoveLineDown", d "Move line down")
-map("n", "<A-up>", "<Plug>MoveLineUp", d "Move line up")
-map("n", "<C-A-j>", "<Plug>MoveLineDown", d "Move line down")
-map("n", "<C-A-k>", "<Plug>MoveLineUp", d "Move line up")
-
-map("i", "<A-down>", "<C-c> <Plug>MoveLineDown", d "Move selection down")
-map("i", "<A-up>", "<C-c> <Plug>MoveLineUp", d "Move selection up")
-map("i", "<C-A-j>", "<C-c> <Plug>MoveLineDown", d "Move line down")
-map("i", "<C-A-k>", "<C-c> <Plug>MoveLineUp", d "Move line up")
-
--- block
-map("v", "<A-down>", "<Plug>MoveBlockDown", d "Move selection down")
-map("v", "<A-up>", "<Plug>MoveBlockUp", d "Move selection up")
-map("v", "<C-A-j>", "<Plug>MoveBlockDown", d "Move selection down")
-map("v", "<C-A-k>", "<Plug>MoveBlockUp", d "Move selection up")
-
--- NOTE: NORMAL MODE
 
 -- debugger
 map("n", "<F5>", "<cmd> lua require'dap'.continue() <CR>", d "Start debugger")
@@ -72,5 +53,11 @@ map({ "n", "v" }, "<leader>q", "<cmd> wqa <CR>")
 
 -- vscode-like mappings
 map({ "n", "v", "i" }, "<C-x>", "dd", d "Delete line")
+map({ "n", "v" }, "<C-z>", "u", d "Undo")
+map({ "i" }, "<C-z>", "<Esc>u", d "Undo")
+map({ "n" }, "<S-M-Down>", "yyp", { desc = "Copy line", remap = true })
+map({ "i" }, "<S-M-Down>", "<Esc>yyp", { desc = "Copy line", remap = true })
+map({ "n" }, "<S-M-Up>", "yykp", { desc = "Copy line", remap = true })
+map({ "i" }, "<S-M-Up>", "<Esc>yykp", { desc = "Copy line", remap = true })
 
 return {}
