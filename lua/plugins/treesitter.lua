@@ -1,5 +1,45 @@
 return {
   {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    version = false, -- last release is way too old and doesn't work on Windows
+    event = "VeryLazy",
+    cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
+    opts_extend = { "ensure_installed" },
+    opts = {
+      indent = { enable = true },
+      highlight = { enable = true },
+      ensure_installed = {
+        "bash",
+        "c",
+        "diff",
+        "html",
+        "javascript",
+        "jsdoc",
+        "json",
+        "jsonc",
+        "lua",
+        "luadoc",
+        "luap",
+        "markdown",
+        "markdown_inline",
+        "printf",
+        "python",
+        "query",
+        "regex",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+        "go",
+        "nu",
+      },
+    },
+  },
+  {
     "nvim-treesitter/nvim-treesitter-textobjects",
     config = function()
       require("nvim-treesitter.configs").setup {
@@ -66,6 +106,11 @@ return {
       "<space>s", -- Join
     },
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    opts = {},
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = "VeryLazy",
     opts = {},
   },
 }
