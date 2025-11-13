@@ -50,6 +50,7 @@ map("i", "<C-s>", "<C-c> <cmd> w <CR>", d "Save in insert mode")
 
 -- Exit nvim
 map({ "n", "v" }, "<leader>q", "<cmd> wqa <CR>")
+map({ "n", "v" }, "q<leader>", "<cmd> wqa <CR>")
 
 -- vscode-like mappings
 map({ "n", "v", "i" }, "<C-x>", "dd", d "Delete line")
@@ -60,4 +61,9 @@ map({ "i" }, "<S-M-Down>", "<Esc>yyp", { desc = "Copy line", remap = true })
 map({ "n" }, "<S-M-Up>", "yykp", { desc = "Copy line", remap = true })
 map({ "i" }, "<S-M-Up>", "<Esc>yykp", { desc = "Copy line", remap = true })
 
+-- buffers
+map("n", "<leader>x", "<cmd> bd<CR>", d "Delete buffer")
+map("n", "<leader>bb", "<cmd> bd<CR>", d "Delete buffer")
+map("n", "<leader>bn", "<cmd> bp<CR>", d "Next buffer")
+map("n", "<leader>bp", "<cmd> bn<CR>", d "Previous buffer")
 return {}

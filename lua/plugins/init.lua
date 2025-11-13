@@ -58,8 +58,13 @@ local plugins = {
     event = "VeryLazy",
   },
   {
-    "folke/neodev.nvim",
-    event = "VeryLazy",
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
   },
   {
     "kdheepak/lazygit.nvim",
@@ -169,6 +174,42 @@ local plugins = {
           require("flash").jump()
         end,
         desc = "Flash",
+      },
+    },
+  },
+  {
+    "folke/persistence.nvim",
+    event = "BufReadPre",
+    opts = {},
+    init = function()
+      local args = vim.fn.argv()
+      if #args ~= 1 then
+        return
+      end
+      if args[1] ~= ":/" then
+        return
+      end
+      vim.g.session_loaded = true
+      require("persistence").load()
+      -- some fucked up magick
+      pcall(vim.cmd.bdelete, { bang = true, args = { "NvimTree_1" } })
+      pcall(vim.cmd.bdelete, { bang = true, args = { ":f" } })
+      pcall(vim.cmd.bdelete, { bang = true, args = { ":w" } })
+      pcall(vim.cmd.bdelete, { bang = true, args = { ":" } })
+      -- nvim-tree-api.tree.toggle_no_buffer_filter()
+      vim.cmd.NvimTreeToggle()
+      vim.cmd.NvimTreeToggle()
+    end,
+    keys = {
+      {
+        "<leader>sl",
+        "<cmd>lua require('persistence').load()<cr>",
+        desc = "Load session",
+      },
+      {
+        "<leader>sc",
+        "<cmd>lua require('persistence').select()<cr>",
+        desc = "Select session",
       },
     },
   },

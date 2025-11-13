@@ -23,3 +23,4 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "cmd.restore_curr_pos"
+require "cmd.startup_magic"
