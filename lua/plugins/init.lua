@@ -15,6 +15,12 @@ local plugins = {
     },
     keys = {
       { "<leader>st", "<cmd>SupermavenToggle<cr>", desc = "Toggle supermaven" },
+      {
+        "<C-j>",
+        "<cmd>SupermavenAcceptWord<cr>",
+        desc = "Accept word",
+        noremap = true,
+      },
     },
   },
   {
@@ -211,6 +217,12 @@ local plugins = {
         "<cmd>lua require('persistence').select()<cr>",
         desc = "Select session",
       },
+    },
+  },
+  {
+    "ChuufMaster/buffer-vacuum",
+    opts = {
+      max_buffers = 3,
     },
   },
 }

@@ -8,4 +8,4 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.wo.wrap = false
-vim.opt.scrolloff = 666
+vim.opt.scrolloff = 5

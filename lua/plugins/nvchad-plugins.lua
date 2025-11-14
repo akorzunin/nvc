@@ -82,6 +82,9 @@ return {
   {
     "nvim-tree/nvim-tree.lua",
     cmd = { "NvimTreeToggle", "NvimTreeFocus" },
+    opts = {
+      view = { side = "right" },
+    },
     keys = {
       {
         "<leader>tf",
