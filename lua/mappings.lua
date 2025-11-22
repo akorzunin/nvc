@@ -64,6 +64,24 @@ map({ "i" }, "<S-M-Up>", "<Esc>yykp", { desc = "Copy line", remap = true })
 -- buffers
 map("n", "<leader>x", "<cmd> bd<CR>", d "Delete buffer")
 map("n", "<leader>bb", "<cmd> bd<CR>", d "Delete buffer")
-map("n", "<leader>bn", "<cmd> bp<CR>", d "Next buffer")
-map("n", "<leader>bp", "<cmd> bn<CR>", d "Previous buffer")
+map("n", "<leader>bn", "<cmd> bn<CR>", d "Next buffer")
+map("n", "<M-Right>", "<cmd> bn<CR>", d "Previous buffer")
+map("n", "<leader>bp", "<cmd> bp<CR>", d "Previous buffer")
+map("n", "<M-Left>", "<cmd> bp<CR>", d "Next buffer")
+
+map(
+  { "n", "v" },
+  "<F2>",
+  "<cmd> lua vim.lsp.buf.code_action()<CR>",
+  d "Code action"
+)
+
+--set rosepine theme
+map("n", "<leader>tp", function()
+  require("nvconfig").base46.theme = "rosepine"
+  require("base46").load_all_highlights()
+  dofile(vim.g.base46_cache .. "defaults")
+  dofile(vim.g.base46_cache .. "statusline")
+end, d "Rosepine theme")
+
 return {}

@@ -174,7 +174,7 @@ local plugins = {
     opts = {},
     keys = {
       {
-        "s",
+        "aa",
         mode = { "n", "x", "o" },
         function()
           require("flash").jump()
