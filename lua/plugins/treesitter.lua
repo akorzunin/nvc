@@ -1,102 +1,56 @@
+local ensure_installed = {
+  "bash",
+  "c",
+  "diff",
+  "html",
+  "javascript",
+  "jsdoc",
+  "json",
+  "jsonc",
+  "lua",
+  "luadoc",
+  "luap",
+  "markdown",
+  "markdown_inline",
+  "printf",
+  "python",
+  "query",
+  "regex",
+  "toml",
+  "tsx",
+  "typescript",
+  "vim",
+  "vimdoc",
+  "xml",
+  "yaml",
+  "go",
+  "nu",
+}
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
     branch = "main",
-    version = false, -- last release is way too old and doesn't work on Windows
-    event = "VeryLazy",
-    cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
-    opts_extend = { "ensure_installed" },
-    opts = {
-      indent = { enable = true },
-      highlight = { enable = true },
-      ensure_installed = {
-        "bash",
-        "c",
-        "diff",
-        "html",
-        "javascript",
-        "jsdoc",
-        "json",
-        "jsonc",
-        "lua",
-        "luadoc",
-        "luap",
-        "markdown",
-        "markdown_inline",
-        "printf",
-        "python",
-        "query",
-        "regex",
-        "toml",
-        "tsx",
-        "typescript",
-        "vim",
-        "vimdoc",
-        "xml",
-        "yaml",
-        "go",
-        "nu",
-      },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    config = function()
-      require("nvim-treesitter.configs").setup {
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ac"] = "@class.outer",
-              ["ic"] = "@class.inner",
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-              ["ab"] = "@block.outer",
-              ["ib"] = "@block.inner",
-            },
-          },
-        },
-      }
+    build = function(plugin)
+      vim.fn.delete(plugin.dir .. "/parser", "rf")
     end,
-    init = function()
-      vim.keymap.set({ "x", "o" }, "af", function()
-        require("nvim-treesitter-textobjects.select").select_textobject(
-          "@function.outer",
-          "textobjects"
-        )
-      end)
-      vim.keymap.set({ "x", "o" }, "if", function()
-        require("nvim-treesitter-textobjects.select").select_textobject(
-          "@function.inner",
-          "textobjects"
-        )
-      end)
-      vim.keymap.set({ "x", "o" }, "ac", function()
-        require("nvim-treesitter-textobjects.select").select_textobject(
-          "@class.outer",
-          "textobjects"
-        )
-      end)
-      vim.keymap.set({ "x", "o" }, "ic", function()
-        require("nvim-treesitter-textobjects.select").select_textobject(
-          "@class.inner",
-          "textobjects"
-        )
-      end)
-      -- You can also use captures from other query groups like `locals.scm`
-      vim.keymap.set({ "x", "o" }, "as", function()
-        require("nvim-treesitter-textobjects.select").select_textobject(
-          "@local.scope",
-          "locals"
-        )
-      end)
+    lazy = false,
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      vim.list_extend(opts.ensure_installed, ensure_installed)
     end,
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-    },
+    config = function(_, opts)
+      require("nvim-treesitter").setup(opts)
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup(
+          "treesitter_highlight",
+          { clear = true }
+        ),
+        callback = function(args)
+          pcall(vim.treesitter.start, args.buf)
+        end,
+      })
+    end,
   },
   {
     "Wansmer/treesj",
@@ -105,7 +59,6 @@ return {
       "<space>j", -- Split
       "<space>s", -- Join
     },
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {},
   },
   {

@@ -6,7 +6,9 @@ return {
       ensure_installed = {
         "lua_ls",
         "html",
+        "ts_ls",
         "tailwindcss",
+        "ruff",
         "basedpyright",
         "gopls",
       },
@@ -42,6 +44,37 @@ return {
         desc = "jump to implementation",
       },
       {
+        "<leader>jt",
+        "<cmd> lua vim.lsp.buf.type_definition() <CR>",
+        desc = "jump to type definition",
+      },
+      {
+        "K",
+        "<cmd> lua vim.lsp.buf.hover() <CR>",
+        desc = "show docs/type under cursor",
+      },
+      {
+        "<leader>lh",
+        "<cmd> lua vim.lsp.buf.hover() <CR>",
+        desc = "show docs/type under cursor",
+      },
+      {
+        "<C-k>",
+        "<cmd> lua vim.lsp.buf.signature_help() <CR>",
+        desc = "show function signature",
+        mode = { "n", "i" },
+      },
+      {
+        "<leader>li",
+        function()
+          vim.lsp.inlay_hint.enable(
+            not vim.lsp.inlay_hint.is_enabled { bufnr = 0 },
+            { bufnr = 0 }
+          )
+        end,
+        desc = "toggle inlay type hints",
+      },
+      {
         "<leader>jff",
         "<cmd> :Telescope builtin default_text=lsp previewer=false <CR>",
         desc = "lsp biltins",
@@ -68,8 +101,8 @@ return {
       },
       {
         "<leader>ll",
-        "<cmd> LspInfo <CR>",
-        desc = "lsp info",
+        "<cmd> checkhealth vim.lsp <CR>",
+        desc = "lsp health",
       },
       {
         "<leader>ls",

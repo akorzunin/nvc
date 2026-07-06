@@ -28,7 +28,6 @@ return {
   },
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
     cmd = "Telescope",
     keys = {
       { "<leader>fk", "<cmd> Telescope keymaps <CR>", desc = "Keymaps" },
@@ -64,17 +63,13 @@ return {
   {
     "neovim/nvim-lspconfig",
     config = function()
-      -- This server installed only on :MasonInstallAll
       vim.lsp.enable {
-        "lua-language-server",
-        "html-lsp",
+        "lua_ls",
+        "html",
         "ts_ls",
-        "tailwindcss-language-server",
-        "debugpy",
-        "mypy",
+        "tailwindcss",
         "ruff",
-        "ruff-lsp",
-        "based-pyright",
+        "basedpyright",
         "gopls",
       }
     end,

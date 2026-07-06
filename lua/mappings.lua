@@ -5,21 +5,40 @@ end
 
 map("i", "<C-V>", "<Nop>", { noremap = true })
 
+vim.api.nvim_create_user_command("KittyHere", function()
+  if vim.fn.executable "kitty" == 0 then
+    vim.notify("kitty not found", vim.log.levels.ERROR)
+    return
+  end
+  vim.fn.jobstart(
+    { "kitty", "--working-directory", vim.fn.getcwd() },
+    { detach = true }
+  )
+end, {})
+map("n", "<C-`>", "<cmd>KittyHere<CR>", d "open kitty here")
+map("n", "<F1>", function()
+  require("cmd.command_palette").open()
+end, d "command palette")
+map(
+  "x",
+  "<F1>",
+  "<Esc><cmd>lua require('cmd.command_palette').open()<CR>",
+  d "command palette"
+)
+map(
+  "i",
+  "<F1>",
+  "<Esc><cmd>lua require('cmd.command_palette').open()<CR>",
+  d "command palette"
+)
+map("n", "<leader>n", function()
+  vim.wo.number = true
+  vim.wo.relativenumber = not vim.wo.relativenumber
+end, d "toggle relative numbers")
+
 -- comment line
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "toggle comment", remap = true })
-
--- debugger
-map("n", "<F5>", "<cmd> lua require'dap'.continue() <CR>", d "Start debugger")
-map(
-  "n",
-  "<F9>",
-  "<cmd> lua require'dap'.toggle_breakpoint() <CR>",
-  d "Toggle breakpoint"
-)
-map("n", "<F10>", "<cmd> lua require'dap'.step_over() <CR>", d "Start debugger")
-map("n", "<F11>", "<cmd> lua require'dap'.step_into() <CR>", d "Start debugger")
-map("n", "<F12>", "<cmd> lua require'dap'.step_out() <CR>", d "Start debugger")
 
 map("n", "<leader>wp", '"+gp', d "paste from Windows clipboard")
 map("n", "<leader>ww", "<cmd> set wrap! <CR>", d "toggle wrap")

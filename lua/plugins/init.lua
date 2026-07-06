@@ -5,12 +5,18 @@ end
 local plugins = {
   {
     "supermaven-inc/supermaven-nvim",
-    event = "VeryLazy",
+    -- custom color doest work on lazyload
+    -- event = "VeryLazy",
+    lazy = false,
     opts = {
       keymaps = {
         accept_suggestion = "<C-k>",
         accept_word = "<C-j>",
         clear_suggestion = "<C-l>",
+      },
+      color = {
+        suggestion_color = "#eb6f92",
+        cterm = 244,
       },
     },
     keys = {
@@ -100,18 +106,6 @@ local plugins = {
       map("v", "<C-A-j>", "<Plug>MoveBlockDown", d "Move selection down")
       map("v", "<C-A-k>", "<Plug>MoveBlockUp", d "Move selection up")
     end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    event = "VeryLazy",
-    opts = {},
-    keys = {
-      {
-        "<leader>ts",
-        "<cmd>TSContextToggle<cr>",
-        desc = "toggle sticky headers",
-      },
-    },
   },
   {
     "nmac427/guess-indent.nvim",
