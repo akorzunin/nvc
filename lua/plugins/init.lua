@@ -39,6 +39,38 @@ local plugins = {
     },
   },
   {
+    "sindrets/diffview.nvim",
+    cmd = { "DiffviewOpen", "DiffviewFileHistory" },
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = function()
+      local actions = require "diffview.actions"
+      local open_file =
+        { "n", "<leader>go", actions.goto_file_edit, { desc = "Open file" } }
+
+      return {
+        hooks = {
+          diff_buf_win_enter = function()
+            vim.opt_local.scrollbind = true
+            vim.opt_local.cursorbind = true
+            vim.opt_local.scrollopt = { "ver", "hor", "jump" }
+          end,
+          view_post_layout = function(view)
+            view.cur_layout:sync_scroll()
+          end,
+        },
+        keymaps = {
+          view = { open_file },
+          file_panel = { open_file },
+          file_history_panel = { open_file },
+        },
+      }
+    end,
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<cr>", desc = "Git Diff" },
+      { "<leader>gD", "<cmd>DiffviewFileHistory %<cr>", desc = "File History" },
+    },
+  },
+  {
     "mbbill/undotree",
     event = "VeryLazy",
     keys = {
