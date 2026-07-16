@@ -35,6 +35,7 @@ map("n", "<leader>n", function()
   vim.wo.number = true
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, d "toggle relative numbers")
+map("n", "<Space><Space>", "<cmd>%s/\\s\\+$//e<CR>", d "trim trailing whitespace")
 
 -- comment line
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
