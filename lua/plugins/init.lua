@@ -8,6 +8,8 @@ local plugins = {
     -- custom color doest work on lazyload
     -- event = "VeryLazy",
     lazy = false,
+    -- Load after NvChad so its insert-mode mappings win.
+    priority = 1,
     opts = {
       keymaps = {
         accept_suggestion = "<C-k>",
@@ -21,12 +23,6 @@ local plugins = {
     },
     keys = {
       { "<leader>st", "<cmd>SupermavenToggle<cr>", desc = "Toggle supermaven" },
-      {
-        "<C-j>",
-        "<cmd>SupermavenAcceptWord<cr>",
-        desc = "Accept word",
-        noremap = true,
-      },
     },
   },
   {
