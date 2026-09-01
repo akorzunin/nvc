@@ -4,6 +4,12 @@ local d = function(desc)
 end
 local plugins = {
   {
+    "Wansmer/langmapper.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
     "supermaven-inc/supermaven-nvim",
     -- custom color doest work on lazyload
     -- event = "VeryLazy",
