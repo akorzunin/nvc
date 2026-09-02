@@ -4,11 +4,15 @@ local function escape_langmap(value)
   return vim.fn.escape(value, [[;,."|\]])
 end
 
-local en =
-  [[~QWERTYUIOP{}|ASDFGHJKL:"ZXCVBNM<>?`qwertyuiop[]asdfghjkl;'zxcvbnm,./]]
-local ru =
-  [[ЁЙЦУКЕНГШЩЗХЪ/ФЫВАПРОЛДЖЭЯЧСМИТЬБЮ,ёйцукенгшщзхъфывапролджэячсмитьбю.]]
-vim.opt.langmap = escape_langmap(ru) .. ";" .. escape_langmap(en)
+local en = [[`qwertyuiop[]asdfghjkl;'zxcvbnm]]
+local ru = [[ёйцукенгшщзхъфывапролджэячсмить]]
+local en_shift = [[~QWERTYUIOP{}ASDFGHJKL:"ZXCVBNM<>]]
+local ru_shift =
+  [[ЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ]]
+vim.opt.langmap = table.concat({
+  escape_langmap(ru_shift) .. ";" .. escape_langmap(en_shift),
+  escape_langmap(ru) .. ";" .. escape_langmap(en),
+}, ",")
 vim.opt.list = true
 vim.opt.listchars:append { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.listchars:append { eol = "↵" }

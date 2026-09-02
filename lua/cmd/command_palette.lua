@@ -38,6 +38,29 @@ local function selected_case(change)
   vim.api.nvim_buf_set_lines(0, sr - 1, er, false, lines)
 end
 
+local function replace(range)
+  vim.ui.input({ prompt = "Find: " }, function(search)
+    if not search or search == "" then
+      return
+    end
+
+    vim.ui.input({ prompt = "Replace with: " }, function(replacement)
+      if replacement == nil then
+        return
+      end
+
+      vim.cmd(
+        string.format(
+          "%ss/%s/%s/g",
+          range,
+          vim.fn.escape(search, [[\/]]),
+          vim.fn.escape(replacement, [[\/&]])
+        )
+      )
+    end)
+  end)
+end
+
 local commands = {
   {
     name = "Selection: uppercase",
@@ -49,6 +72,18 @@ local commands = {
     name = "Selection: lowercase",
     run = function()
       selected_case(vim.fn.tolower)
+    end,
+  },
+  {
+    name = "Replace in file",
+    run = function()
+      replace "%"
+    end,
+  },
+  {
+    name = "Replace in selection",
+    run = function()
+      replace "'<,'>"
     end,
   },
   {
