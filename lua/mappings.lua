@@ -35,7 +35,12 @@ map("n", "<leader>n", function()
   vim.wo.number = true
   vim.wo.relativenumber = not vim.wo.relativenumber
 end, d "toggle relative numbers")
-map("n", "<Space><Space>", "<cmd>%s/\\s\\+$//e<CR>", d "trim trailing whitespace")
+map(
+  "n",
+  "<Space><Space>",
+  "<cmd>%s/\\s\\+$//e<CR>",
+  d "trim trailing whitespace"
+)
 
 -- comment line
 map("n", "<leader>/", "gcc", { desc = "toggle comment", remap = true })
@@ -73,7 +78,6 @@ map({ "n", "v" }, "<leader>q", "<cmd> wqa <CR>")
 map({ "n", "v" }, "q<leader>", "<cmd> wqa <CR>")
 
 -- vscode-like mappings
-map({ "n", "v", "i" }, "<C-x>", "dd", d "Delete line")
 map({ "n", "v" }, "<C-z>", "u", d "Undo")
 map({ "i" }, "<C-z>", "<Esc>u", d "Undo")
 map({ "n" }, "<S-M-Down>", "yyp", { desc = "Copy line", remap = true })

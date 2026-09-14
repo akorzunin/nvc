@@ -18,7 +18,7 @@ vim.opt.listchars:append { tab = "» ", trail = "·", nbsp = "␣" }
 vim.opt.listchars:append { eol = "↵" }
 
 vim.opt.number = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 
-vim.wo.wrap = false
+vim.wo.wrap = true
 vim.opt.scrolloff = 5
