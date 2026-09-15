@@ -63,6 +63,12 @@ end
 
 local commands = {
   {
+    name = "Buffer: next",
+    run = function()
+      vim.cmd.bnext()
+    end,
+  },
+  {
     name = "Selection: uppercase",
     run = function()
       selected_case(vim.fn.toupper)
